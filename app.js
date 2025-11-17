@@ -18,7 +18,7 @@ const DEFAULT_CONTENT = {
     },
     hero: {
         subtitle: "WENJIE XU",
-        title: "少工作，多赚钱。<br />享受生活！",
+        title: "保持好奇 也保持自在",
         description: "Join us and witness every step as a one-person company grows from chaos to clarity — with <span class=\"underline\">MDFriday</span> as the engine behind it.",
 
     },
@@ -200,31 +200,31 @@ const App = () => {
     const { header, hero, portfolio, featuredPosts, footer } = content;
 
     return (
-        <div className="max-w-screen-lg mx-auto px-6 py-12">
+        <div className="max-w-[90vw] mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12 lg:py-16">
             {/* 头部信息 */}
-            <header className="flex justify-between items-center mb-20">
+            <header className="flex justify-between items-center mb-12 sm:mb-16 md:mb-20">
                 <div className="flex items-center">
-                    <img src={header.avatar} alt={header.name} className="w-14 h-14 rounded-full mr-4" loading="lazy" />
+                    <img src={header.avatar} alt={header.name} className="w-12 h-12 sm:w-14 sm:h-14 rounded-full mr-3 sm:mr-4" loading="lazy" />
                     <span className="font-medium text-gray-800 text-lg">{header.name}</span>
                 </div>
             </header>
 
             {/* Hero 区块 */}
-            <section className="mb-32">
-                <h1 className="text-red-500 text-sm font-bold mb-6 tracking-widest">{hero.subtitle}</h1>
+            <section className="mb-12 sm:mb-16 md:mb-20">
+                <h1 className="text-red-500 text-sm font-bold mb-4 sm:mb-6 tracking-widest">{hero.subtitle}</h1>
                 <h2
-                    className="text-6xl font-bold mb-8 leading-tight display-font tracking-tight"
+                    className="text-6xl font-bold mb-8 sm:mb-10 leading-tight display-font tracking-tight"
                     dangerouslySetInnerHTML={{ __html: hero.title }}
-                    style={{ fontSize: 'clamp(3.5rem, 10vw, 5.5rem)', fontWeight: 700 }}
+                    style={{ fontSize: 'clamp(2.5rem, 8vw, 5rem)', fontWeight: 700 }}
                 ></h2>
-                <p className="text-2xl mb-6 text-gray-700 max-w-3xl leading-relaxed" dangerouslySetInnerHTML={{ __html: hero.description }}></p>
+                <p className="text-xl sm:text-2xl mb-6 sm:mb-8 text-gray-700 max-w-3xl leading-relaxed" dangerouslySetInnerHTML={{ __html: hero.description }}></p>
 
             </section>
 
             {/* Portfolio 区块 */}
-            <section className="mb-32">
-                <h2 className="text-3xl font-bold mb-8 display-font">{portfolio.title}</h2>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <section className="mb-12 sm:mb-16 md:mb-20">
+                <h2 className="text-2xl sm:text-3xl font-bold mb-8 sm:mb-10 display-font">{portfolio.title}</h2>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10">
                     {portfolio.items.map((item) => (
                         <PortfolioItem key={item.id || item.title} item={item} />
                     ))}
@@ -232,17 +232,17 @@ const App = () => {
             </section>
 
             {/* Featured Posts 区块 */}
-            <section className="mb-32">
-                <h2 className="text-3xl font-bold mb-8 display-font">{featuredPosts.title}</h2>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <section className="mb-12 sm:mb-16 md:mb-20">
+                <h2 className="text-2xl sm:text-3xl font-bold mb-8 sm:mb-10 display-font">{featuredPosts.title}</h2>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10">
                     {featuredPosts.items.map((item) => (
                         <FeaturedPostItem key={item.id || item.title} item={item} />
                     ))}
                 </div>
-                <div className="flex justify-end mt-8">
+                <div className="flex justify-end mt-8 sm:mt-10">
                     <a
                         href={featuredPosts.seeAllUrl}
-                        className="text-pink-500 font-medium flex items-center hover:text-pink-600 transition-colors text-lg"
+                        className="text-pink-500 font-medium flex items-center hover:text-pink-600 transition-colors text-base sm:text-lg"
                     >
                         {featuredPosts.seeAllText} <i className="fas fa-arrow-right ml-2"></i>
                     </a>
@@ -250,10 +250,10 @@ const App = () => {
             </section>
 
             {/* 页脚 */}
-            <footer className="py-12 border-t border-gray-200">
+            <footer className="pt-12 sm:pt-16 pb-6 sm:pb-8 border-t border-gray-200">
                 <div className="flex justify-between items-center flex-col md:flex-row gap-6 md:gap-0">
-                    <p className="text-gray-600 text-lg text-center md:text-left">{footer.copyright}</p>
-                    <div className="flex space-x-6">
+                    <p className="text-gray-600 text-base sm:text-lg text-center md:text-left">{footer.copyright}</p>
+                    <div className="flex space-x-4 sm:space-x-6">
                         {footer.socialLinks.map((link) => (
                             <SocialLink key={link.url} link={link} />
                         ))}
