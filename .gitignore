@@ -37,3 +37,6 @@ yarn-error.log*
 # Lock files (optional - uncomment if you don't want to commit lock files)
 # package-lock.json
 # yarn.lock
+
+# env
+.env

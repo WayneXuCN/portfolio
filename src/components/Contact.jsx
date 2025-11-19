@@ -1,11 +1,48 @@
-import React from 'react';
+import React, { useRef, useState } from 'react';
+import emailjs from '@emailjs/browser';
 import HeaderBar from './HeaderBar.jsx';
 import Hero from './Hero.jsx';
 import SocialLink from './SocialLink.jsx';
 
 const Contact = ({ content }) => {
   const { header, contact, footer } = content;
-  const { hero, cards, form, services } = contact;
+  const { hero, cards, form: formContent, services } = contact;
+  const form = useRef();
+  const [status, setStatus] = useState('idle'); // idle, sending, success, error
+
+  const sendEmail = (e) => {
+    e.preventDefault();
+    setStatus('sending');
+
+    // 使用环境变量获取配置
+    // 请确保在 .env 文件中配置了这些变量
+    const serviceId = process.env.EMAILJS_SERVICE_ID;
+    const templateId = process.env.EMAILJS_TEMPLATE_ID;
+    const publicKey = process.env.EMAILJS_PUBLIC_KEY;
+
+    if (!serviceId || !templateId || !publicKey) {
+      console.error('EmailJS 环境变量未配置');
+      setStatus('error');
+      return;
+    }
+
+    emailjs
+      .sendForm(serviceId, templateId, form.current, {
+        publicKey: publicKey,
+      })
+      .then(
+        () => {
+          setStatus('success');
+          form.current.reset();
+          setTimeout(() => setStatus('idle'), 5000);
+        },
+        (error) => {
+          console.error('FAILED...', error.text);
+          setStatus('error');
+          setTimeout(() => setStatus('idle'), 5000);
+        }
+      );
+  };
 
   return (
     <div className="max-w-[90vw] mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12 lg:py-16">
@@ -38,23 +75,26 @@ const Contact = ({ content }) => {
       <section className="mb-12 sm:mb-16 md:mb-20">
         <div className="flex items-center justify-between mb-8">
           <div>
-            <p className="text-xs uppercase tracking-[0.4em] text-gray-400">{form.subtitle}</p>
-            <h2 className="text-3xl font-semibold display-font">{form.title}</h2>
+            <p className="text-xs uppercase tracking-[0.4em] text-gray-400">{formContent.subtitle}</p>
+            <h2 className="text-3xl font-semibold display-font">{formContent.title}</h2>
           </div>
           <span
             className="text-sm text-gray-400"
-            dangerouslySetInnerHTML={{ __html: form.note }}
+            dangerouslySetInnerHTML={{ __html: formContent.note }}
           ></span>
         </div>
-        <form className="bg-gray-50 border border-gray-200 rounded-3xl p-8 space-y-6" name="contact" netlify="true">
-          <input type="hidden" name="form-name" value="contact" />
+        <form
+          ref={form}
+          onSubmit={sendEmail}
+          className="bg-gray-50 border border-gray-200 rounded-3xl p-8 space-y-6"
+        >
           <div>
             <label htmlFor="name" className="block text-sm font-medium text-gray-600 mb-2">
               称呼
             </label>
             <input
               id="name"
-              name="name"
+              name="user_name"
               type="text"
               required
               className="w-full border border-gray-200 rounded-2xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-black"
@@ -67,7 +107,7 @@ const Contact = ({ content }) => {
             </label>
             <input
               id="email"
-              name="email"
+              name="user_email"
               type="email"
               required
               className="w-full border border-gray-200 rounded-2xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-black"
@@ -97,15 +137,29 @@ const Contact = ({ content }) => {
               id="message"
               name="message"
               rows="5"
+              required
               className="w-full border border-gray-200 rounded-2xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-black"
               placeholder="目标、时间、你期待的成果..."
             ></textarea>
           </div>
           <button
             type="submit"
-            className="w-full bg-black text-white py-4 rounded-2xl font-semibold text-lg card-hover"
+            disabled={status === 'sending' || status === 'success'}
+            className={`w-full py-4 rounded-2xl font-semibold text-lg transition-all ${
+              status === 'success'
+                ? 'bg-green-600 text-white'
+                : status === 'error'
+                ? 'bg-red-600 text-white'
+                : 'bg-black text-white card-hover'
+            } disabled:opacity-70 disabled:cursor-not-allowed`}
           >
-            发送给 Wenjie
+            {status === 'sending'
+              ? '发送中...'
+              : status === 'success'
+              ? '发送成功！我会尽快回复'
+              : status === 'error'
+              ? '发送失败，请稍后重试'
+              : '发送给 Wenjie'}
           </button>
         </form>
       </section>

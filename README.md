@@ -1,6 +1,6 @@
-# 个人主页
+# 个人作品集
 
-使用 React 19、Tailwind CSS 3 和 esbuild 构建的多页面静态站点。
+使用 React 19、Tailwind CSS 3 和 esbuild 构建的个人作品集网站。
 
 ## 快速开始
 
@@ -47,4 +47,37 @@ npm run build     # 生产构建（assets/css + assets/js）
 - `npm run build:css`：单独构建 Tailwind（含 PostCSS/Autoprefixer）。
 - `npm run watch:*`：分别监听 JS/CSS。
 
-欢迎基于目前的结构继续扩展更多页面或数据源。
+欢迎基于目前的结构继续扩展更多作品或功能。
+
+## 邮件发送功能
+
+联系表单使用 [EmailJS](https://www.emailjs.com/) 实现纯静态邮件发送，无需后端服务。
+
+### 配置步骤
+
+1. **注册 EmailJS**
+   - 访问 [EmailJS 官网](https://www.emailjs.com/) 注册账号
+   - 创建一个 Email Service（如 Gmail）
+   - 创建一个 Email Template，确保模板变量名与表单字段一致：
+     - `{{user_name}}` 对应 `name="user_name"`
+     - `{{user_email}}` 对应 `name="user_email"`
+     - `{{topic}}` 对应 `name="topic"`
+     - `{{message}}` 对应 `name="message"`
+
+2. **获取配置信息**
+   - Service ID：在 Email Services 页面获取
+   - Template ID：在 Email Templates 页面获取
+   - Public Key：在 Account -> General 页面获取
+
+3. **配置环境变量**
+   - 在项目根目录的 `.env` 文件中添加：
+
+     ```env
+     EMAILJS_SERVICE_ID=your_service_id
+     EMAILJS_TEMPLATE_ID=your_template_id
+     EMAILJS_PUBLIC_KEY=your_public_key
+     ```
+
+4. **部署配置**
+   - **本地开发**：直接运行 `npm run dev`，环境变量会自动加载
+   - **服务器部署**：在部署平台（如 Vercel/Netlify）的环境变量设置中添加上述三个变量
