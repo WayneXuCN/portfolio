@@ -14,7 +14,12 @@ const WebsiteItem = ({ item }) => (
       }
     }}
   >
-    <img src={item.image} alt={item.title} className="w-full h-64 object-cover" loading="lazy" />
+    <img
+      src={item.image}
+      alt={item.title}
+      className="w-full h-64 object-cover"
+      loading="lazy"
+    />
     <div className="absolute inset-0 bg-black bg-opacity-40 card-overlay transition-all duration-300 flex flex-col p-6">
       <div>
         <h3 className="text-white text-2xl font-bold mb-2">{item.title}</h3>

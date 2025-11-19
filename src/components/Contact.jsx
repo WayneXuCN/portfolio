@@ -48,22 +48,38 @@ const Contact = ({ content }) => {
     <div className="max-w-[90vw] mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12 lg:py-16">
       <HeaderBar header={header} />
 
-      <Hero subtitle={hero.subtitle} title={hero.title} description={hero.description} />
+      <Hero
+        subtitle={hero.subtitle}
+        title={hero.title}
+        description={hero.description}
+      />
 
       <section className="mb-12 sm:mb-16 md:mb-20 grid md:grid-cols-2 gap-8">
-        <div className="p-6 border border-gray-200 rounded-3xl card-hover">
-          <p className="text-xs uppercase tracking-[0.4em] text-gray-400 mb-2">{cards.email.subtitle}</p>
-          <a href={`mailto:${cards.email.address}`} className="text-2xl font-semibold underline">
+        <div className="p-6 border border-gray-200 rounded-3xl card-hover text-center md:text-left">
+          <p className="text-xs uppercase tracking-[0.4em] text-gray-400 mb-2">
+            {cards.email.subtitle}
+          </p>
+          <a
+            href={`mailto:${cards.email.address}`}
+            className="text-2xl font-semibold underline break-all"
+          >
             {cards.email.address}
           </a>
           <p className="text-sm text-gray-500 mt-3">{cards.email.note}</p>
         </div>
-        <div className="p-6 border border-gray-200 rounded-3xl card-hover">
-          <p className="text-xs uppercase tracking-[0.4em] text-gray-400 mb-2">{cards.social.subtitle}</p>
+        <div className="p-6 border border-gray-200 rounded-3xl card-hover text-center md:text-left">
+          <p className="text-xs uppercase tracking-[0.4em] text-gray-400 mb-2">
+            {cards.social.subtitle}
+          </p>
           <ul className="space-y-2 text-gray-700">
             {cards.social.items.map((item) => (
               <li key={item.label}>
-                <a className="underline" href={item.url} target="_blank" rel="noopener noreferrer">
+                <a
+                  className="underline"
+                  href={item.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   {item.label}
                 </a>
               </li>
@@ -75,8 +91,12 @@ const Contact = ({ content }) => {
       <section className="mb-12 sm:mb-16 md:mb-20">
         <div className="flex items-center justify-between mb-8">
           <div>
-            <p className="text-xs uppercase tracking-[0.4em] text-gray-400">{formContent.subtitle}</p>
-            <h2 className="text-3xl font-semibold display-font">{formContent.title}</h2>
+            <p className="text-xs uppercase tracking-[0.4em] text-gray-400">
+              {formContent.subtitle}
+            </p>
+            <h2 className="text-3xl font-semibold display-font">
+              {formContent.title}
+            </h2>
           </div>
           <span
             className="text-sm text-gray-400"
@@ -89,7 +109,10 @@ const Contact = ({ content }) => {
           className="bg-gray-50 border border-gray-200 rounded-3xl p-8 space-y-6"
         >
           <div>
-            <label htmlFor="name" className="block text-sm font-medium text-gray-600 mb-2">
+            <label
+              htmlFor="name"
+              className="block text-sm font-medium text-gray-600 mb-2"
+            >
               称呼
             </label>
             <input
@@ -102,7 +125,10 @@ const Contact = ({ content }) => {
             />
           </div>
           <div>
-            <label htmlFor="email" className="block text-sm font-medium text-gray-600 mb-2">
+            <label
+              htmlFor="email"
+              className="block text-sm font-medium text-gray-600 mb-2"
+            >
               邮箱
             </label>
             <input
@@ -115,7 +141,10 @@ const Contact = ({ content }) => {
             />
           </div>
           <div>
-            <label htmlFor="topic" className="block text-sm font-medium text-gray-600 mb-2">
+            <label
+              htmlFor="topic"
+              className="block text-sm font-medium text-gray-600 mb-2"
+            >
               项目类型
             </label>
             <select
@@ -125,12 +154,15 @@ const Contact = ({ content }) => {
             >
               <option value="consulting">产品 / 体验咨询</option>
               <option value="content">内容共创</option>
-              <option value="mdfriday">MDFriday 相关</option>
+              <option value="friend">生活交友</option>
               <option value="other">其他想法</option>
             </select>
           </div>
           <div>
-            <label htmlFor="message" className="block text-sm font-medium text-gray-600 mb-2">
+            <label
+              htmlFor="message"
+              className="block text-sm font-medium text-gray-600 mb-2"
+            >
               简要说明
             </label>
             <textarea
@@ -149,17 +181,17 @@ const Contact = ({ content }) => {
               status === 'success'
                 ? 'bg-green-600 text-white'
                 : status === 'error'
-                ? 'bg-red-600 text-white'
-                : 'bg-black text-white card-hover'
+                  ? 'bg-red-600 text-white'
+                  : 'bg-black text-white card-hover'
             } disabled:opacity-70 disabled:cursor-not-allowed`}
           >
             {status === 'sending'
               ? '发送中...'
               : status === 'success'
-              ? '发送成功！我会尽快回复'
-              : status === 'error'
-              ? '发送失败，请稍后重试'
-              : '发送给 Wenjie'}
+                ? '发送成功！我会尽快回复'
+                : status === 'error'
+                  ? '发送失败，请稍后重试'
+                  : '发送给 Wenjie'}
           </button>
         </form>
       </section>
@@ -167,8 +199,13 @@ const Contact = ({ content }) => {
       <section className="mb-12 sm:mb-16 md:mb-20">
         <div className="grid md:grid-cols-3 gap-6">
           {services.items.map((item) => (
-            <article key={item.title} className="p-6 border border-gray-200 rounded-3xl card-hover">
-              <p className="text-xs text-gray-400 uppercase tracking-[0.4em] mb-2">{item.subtitle}</p>
+            <article
+              key={item.title}
+              className="p-6 border border-gray-200 rounded-3xl card-hover"
+            >
+              <p className="text-xs text-gray-400 uppercase tracking-[0.4em] mb-2">
+                {item.subtitle}
+              </p>
               <h3 className="text-xl font-semibold mb-2">{item.title}</h3>
               <p className="text-gray-600 text-sm">{item.description}</p>
             </article>
@@ -178,7 +215,9 @@ const Contact = ({ content }) => {
 
       <footer className="pt-12 sm:pt-16 pb-6 sm:pb-8 border-t border-gray-200">
         <div className="flex justify-between items-center flex-col md:flex-row gap-6 md:gap-0">
-          <p className="text-gray-600 text-base sm:text-lg text-center md:text-left">{footer.copyright}</p>
+          <p className="text-gray-600 text-base sm:text-lg text-center md:text-left">
+            {footer.copyright}
+          </p>
           <div className="flex space-x-4 sm:space-x-6">
             {footer.socialLinks.map((link) => (
               <SocialLink key={link.url} link={link} />

@@ -1,19 +1,19 @@
 /* 社交图标通用样式 */
 .social-icon {
-    width: 20px;
-    height: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* 微博专属悬停色 */
 a:hover .fa-weibo {
-    color: #e6162d !important;
+  color: #e6162d !important;
 }
 
 /* 统一图片悬停反馈 */
 a:hover img {
-    opacity: 0.8;
-    filter: brightness(1.1);
+  opacity: 0.8;
+  filter: brightness(1.1);
 }

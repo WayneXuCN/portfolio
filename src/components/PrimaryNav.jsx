@@ -2,29 +2,43 @@ import React from 'react';
 import { NAV_LINKS } from '../lib/content.js';
 
 const PrimaryNav = () => {
-  const currentPath = typeof window !== 'undefined' ? window.location.pathname : '';
+  const currentPath =
+    typeof window !== 'undefined' ? window.location.pathname : '';
 
   const isActive = (href) => {
     if (!currentPath) return false;
+    // 移除开头的斜杠以进行统一比较，处理本地文件路径或服务器路径
+    const path = currentPath.split('/').pop() || '';
+
     if (href === 'index.html') {
-      return currentPath === '/' || currentPath.endsWith('/index.html');
+      return path === '' || path === 'index.html';
     }
-    return currentPath.endsWith(`/${href}`);
+    return path === href;
   };
 
   return (
-    <nav className="flex flex-wrap items-center gap-4 text-sm font-medium text-gray-600">
-      {NAV_LINKS.map((link, index) => (
-        <React.Fragment key={link.href}>
-          {index > 0 && <span className="text-gray-300">/</span>}
-          <a
-            href={link.href}
-            className={`transition-colors ${isActive(link.href) ? 'text-gray-900' : 'hover:text-gray-900'}`}
-          >
-            {link.label}
-          </a>
-        </React.Fragment>
-      ))}
+    <nav className="flex flex-wrap items-center gap-8 text-base font-medium text-gray-600">
+      {NAV_LINKS.map((link, index) => {
+        const active = isActive(link.href);
+        return (
+          <React.Fragment key={link.href}>
+            {index > 0 && <span className="text-gray-300 select-none">/</span>}
+            <a
+              href={link.href}
+              className={`relative group transition-colors py-1 ${
+                active ? 'text-black font-bold' : 'hover:text-black'
+              }`}
+            >
+              {link.label}
+              <span
+                className={`absolute bottom-0 left-0 h-[2px] bg-black transition-all duration-300 ease-out ${
+                  active ? 'w-full' : 'w-0 group-hover:w-full'
+                }`}
+              ></span>
+            </a>
+          </React.Fragment>
+        );
+      })}
     </nav>
   );
 };

@@ -9,7 +9,12 @@ const SocialLink = ({ link }) => (
     rel="noopener noreferrer"
   >
     {link.imageUrl ? (
-      <img src={link.imageUrl} alt={link.title || 'social-icon'} className="w-full h-full object-contain" loading="lazy" />
+      <img
+        src={link.imageUrl}
+        alt={link.title || 'social-icon'}
+        className="w-full h-full object-contain"
+        loading="lazy"
+      />
     ) : (
       <i className={link.icon}></i>
     )}

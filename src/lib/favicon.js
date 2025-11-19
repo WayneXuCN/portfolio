@@ -1,7 +1,9 @@
 export const applyFavicon = (faviconConfig = {}) => {
   if (typeof document === 'undefined') return;
 
-  const existingLinks = document.querySelectorAll('link[rel="icon"], link[rel="apple-touch-icon"]');
+  const existingLinks = document.querySelectorAll(
+    'link[rel="icon"], link[rel="apple-touch-icon"]'
+  );
   existingLinks.forEach((link) => link.remove());
 
   const head = document.head;

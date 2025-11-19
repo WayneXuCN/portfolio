@@ -3,7 +3,7 @@ export const CONTENT_URL = 'content.json';
 export const NAV_LINKS = [
   { label: '首页', href: 'index.html' },
   { label: '关于', href: 'about.html' },
-  { label: '联系', href: 'contact.html' }
+  { label: '联系', href: 'contact.html' },
 ];
 
 export const DEFAULT_CONTENT = {
@@ -12,44 +12,44 @@ export const DEFAULT_CONTENT = {
     author: '徐文杰',
     favicon: {
       ico: 'favicon.ico',
-      appleTouchIcon: 'apple-touch-icon.png'
-    }
+      appleTouchIcon: 'apple-touch-icon.png',
+    },
   },
   header: {
     avatar: 'https://picsum.photos/seed/avatar123/50/50.jpg',
-    name: '徐文杰'
+    name: '徐文杰',
   },
   hero: {
     subtitle: 'WENJIE XU',
     title: '保持好奇 也保持自在',
     description:
-      'Join us and witness every step as a one-person company grows from chaos to clarity — with <span class="underline">MDFriday</span> as the engine behind it.'
+      'Join us and witness every step as a one-person company grows from chaos to clarity — with <span class="underline">MDFriday</span> as the engine behind it.',
   },
   websites: {
     title: 'Websites',
-    items: []
+    items: [],
   },
   featuredPosts: {
     title: 'Featured Posts',
     items: [],
     seeAllText: 'See All Posts',
-    seeAllUrl: '#'
+    seeAllUrl: '#',
   },
   footer: {
     copyright: '© 2025 All Rights Reserved.',
-    socialLinks: []
+    socialLinks: [],
   },
   about: {
     hero: {
       subtitle: 'STORY',
       title: 'About Me',
-      description: 'My Story'
+      description: 'My Story',
     },
     timeline: {
       subtitle: 'TIMELINE',
       title: 'Timeline',
       period: '2015 - Now',
-      items: []
+      items: [],
     },
     values: {
       subtitle: 'VALUES',
@@ -60,43 +60,43 @@ export const DEFAULT_CONTENT = {
         title: 'Product Title',
         description: 'Product Description',
         linkText: 'Link',
-        linkUrl: '#'
-      }
+        linkUrl: '#',
+      },
     },
     philosophy: {
       subtitle: 'PHILOSOPHY',
       title: 'Philosophy',
       description: 'Philosophy Description',
       ctaText: 'Contact',
-      ctaUrl: 'contact.html'
-    }
+      ctaUrl: 'contact.html',
+    },
   },
   contact: {
     hero: {
       subtitle: 'CONTACT',
       title: 'Contact Me',
-      description: 'Get in touch'
+      description: 'Get in touch',
     },
     cards: {
       email: {
         subtitle: 'EMAIL',
         address: 'email@example.com',
-        note: 'Note'
+        note: 'Note',
       },
       social: {
         subtitle: 'SOCIAL',
-        items: []
-      }
+        items: [],
+      },
     },
     form: {
       subtitle: 'FORM',
       title: 'Form Title',
-      note: 'Note'
+      note: 'Note',
     },
     services: {
-      items: []
-    }
-  }
+      items: [],
+    },
+  },
 };
 
 const deepClone = (value) => {
@@ -108,12 +108,12 @@ const deepClone = (value) => {
 
 const mergeSection = (section = {}, fallback = {}) => ({
   ...fallback,
-  ...section
+  ...section,
 });
 
 const mergeListSection = (section = {}, fallback = {}) => ({
   ...mergeSection(section, fallback),
-  items: Array.isArray(section?.items) ? section.items : fallback.items
+  items: Array.isArray(section?.items) ? section.items : fallback.items,
 });
 
 export const mergeContent = (data = {}) => {
@@ -123,37 +123,67 @@ export const mergeContent = (data = {}) => {
   const websites = mergeListSection(data.websites, DEFAULT_CONTENT.websites);
   const featuredPosts = {
     ...mergeListSection(data.featuredPosts, DEFAULT_CONTENT.featuredPosts),
-    seeAllText: data.featuredPosts?.seeAllText ?? DEFAULT_CONTENT.featuredPosts.seeAllText,
-    seeAllUrl: data.featuredPosts?.seeAllUrl ?? DEFAULT_CONTENT.featuredPosts.seeAllUrl
+    seeAllText:
+      data.featuredPosts?.seeAllText ??
+      DEFAULT_CONTENT.featuredPosts.seeAllText,
+    seeAllUrl:
+      data.featuredPosts?.seeAllUrl ?? DEFAULT_CONTENT.featuredPosts.seeAllUrl,
   };
   const footer = {
     ...mergeSection(data.footer, DEFAULT_CONTENT.footer),
     socialLinks: Array.isArray(data.footer?.socialLinks)
       ? data.footer.socialLinks
-      : DEFAULT_CONTENT.footer.socialLinks
+      : DEFAULT_CONTENT.footer.socialLinks,
   };
 
   const about = {
     hero: mergeSection(data.about?.hero, DEFAULT_CONTENT.about.hero),
-    timeline: mergeListSection(data.about?.timeline, DEFAULT_CONTENT.about.timeline),
+    timeline: mergeListSection(
+      data.about?.timeline,
+      DEFAULT_CONTENT.about.timeline
+    ),
     values: {
       ...mergeListSection(data.about?.values, DEFAULT_CONTENT.about.values),
-      product: mergeSection(data.about?.values?.product, DEFAULT_CONTENT.about.values.product)
+      product: mergeSection(
+        data.about?.values?.product,
+        DEFAULT_CONTENT.about.values.product
+      ),
     },
-    philosophy: mergeSection(data.about?.philosophy, DEFAULT_CONTENT.about.philosophy)
+    philosophy: mergeSection(
+      data.about?.philosophy,
+      DEFAULT_CONTENT.about.philosophy
+    ),
   };
 
   const contact = {
     hero: mergeSection(data.contact?.hero, DEFAULT_CONTENT.contact.hero),
     cards: {
-      email: mergeSection(data.contact?.cards?.email, DEFAULT_CONTENT.contact.cards.email),
-      social: mergeListSection(data.contact?.cards?.social, DEFAULT_CONTENT.contact.cards.social)
+      email: mergeSection(
+        data.contact?.cards?.email,
+        DEFAULT_CONTENT.contact.cards.email
+      ),
+      social: mergeListSection(
+        data.contact?.cards?.social,
+        DEFAULT_CONTENT.contact.cards.social
+      ),
     },
     form: mergeSection(data.contact?.form, DEFAULT_CONTENT.contact.form),
-    services: mergeListSection(data.contact?.services, DEFAULT_CONTENT.contact.services)
+    services: mergeListSection(
+      data.contact?.services,
+      DEFAULT_CONTENT.contact.services
+    ),
   };
 
-  return { site, header, hero, websites, featuredPosts, footer, about, contact };
+  return {
+    site,
+    header,
+    hero,
+    websites,
+    featuredPosts,
+    footer,
+    about,
+    contact,
+  };
 };
 
 export const fetchSiteContent = async () => {
