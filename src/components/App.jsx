@@ -1,4 +1,5 @@
 import React from 'react';
+import { BrowserRouter, Routes, Route, Navigate, Link } from 'react-router-dom';
 import HeaderBar from './HeaderBar.jsx';
 import WebsiteItem from './WebsiteItem.jsx';
 import FeaturedPostItem from './FeaturedPostItem.jsx';
@@ -52,13 +53,13 @@ const Home = ({ content }) => {
           ))}
         </div>
         <div className="flex justify-end mt-8 sm:mt-10">
-          <a
-            href={featuredPosts.seeAllUrl}
+          <Link
+            to={featuredPosts.seeAllUrl}
             className="text-pink-500 font-medium flex items-center hover:text-pink-600 transition-colors text-base sm:text-lg"
           >
             {featuredPosts.seeAllText}{' '}
             <i className="fas fa-arrow-right ml-2"></i>
-          </a>
+          </Link>
         </div>
       </section>
 
@@ -80,9 +81,6 @@ const Home = ({ content }) => {
 
 const MainContent = () => {
   const { content, language } = useLanguage();
-  const [currentPath, setCurrentPath] = React.useState(
-    typeof window !== 'undefined' ? window.location.pathname : ''
-  );
 
   React.useEffect(() => {
     if (content?.site) {
@@ -97,14 +95,16 @@ const MainContent = () => {
     return <LoadingState />;
   }
 
-  if (currentPath.endsWith('/about.html')) {
-    return <About content={content} />;
-  }
-  if (currentPath.endsWith('/contact.html')) {
-    return <Contact content={content} />;
-  }
-
-  return <Home content={content} />;
+  return (
+    <Routes>
+      <Route path="/" element={<Home content={content} />} />
+      <Route path="/index.html" element={<Home content={content} />} />
+      <Route path="/about.html" element={<About content={content} />} />
+      <Route path="/contact.html" element={<Contact content={content} />} />
+      {/* Fallback for unknown routes */}
+      <Route path="*" element={<Navigate to="/" replace />} />
+    </Routes>
+  );
 };
 
 const App = () => {
@@ -136,11 +136,13 @@ const App = () => {
 
   console.log('Content ready, rendering providers');
   return (
-    <LanguageProvider content={fullContent}>
-      <ThemeProvider>
-        <MainContent />
-      </ThemeProvider>
-    </LanguageProvider>
+    <BrowserRouter>
+      <LanguageProvider content={fullContent}>
+        <ThemeProvider>
+          <MainContent />
+        </ThemeProvider>
+      </LanguageProvider>
+    </BrowserRouter>
   );
 };
 

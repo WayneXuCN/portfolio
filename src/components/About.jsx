@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import HeaderBar from './HeaderBar.jsx';
 import Hero from './Hero.jsx';
 import SocialLink from './SocialLink.jsx';
@@ -79,13 +80,13 @@ const About = ({ content }) => {
             <p className="text-gray-600 dark:text-gray-300">
               {values.product.description}
             </p>
-            <a
-              href={values.product.linkUrl}
+            <Link
+              to={values.product.linkUrl}
               className="inline-flex items-center text-pink-500 dark:text-pink-400 font-medium underline mt-4"
             >
               {values.product.linkText}{' '}
               <i className="fas fa-arrow-right ml-2"></i>
-            </a>
+            </Link>
           </div>
         </div>
       </section>
@@ -101,12 +102,12 @@ const About = ({ content }) => {
           <p className="text-lg text-gray-200 dark:text-gray-300 mb-8">
             {philosophy.description}
           </p>
-          <a
-            href={philosophy.ctaUrl}
+          <Link
+            to={philosophy.ctaUrl}
             className="inline-flex items-center text-black bg-white dark:text-white dark:bg-gray-700 px-5 py-3 rounded-full font-semibold"
           >
             {philosophy.ctaText} <i className="fas fa-arrow-right ml-3"></i>
-          </a>
+          </Link>
         </div>
       </section>
 
