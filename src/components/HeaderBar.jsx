@@ -1,5 +1,6 @@
 import React from 'react';
 import PrimaryNav from './PrimaryNav.jsx';
+import LanguageSwitcher from './LanguageSwitcher.jsx';
 
 const HeaderBar = ({ header }) => (
   <header className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6 mb-12 sm:mb-16 md:mb-20 animate-fade-in">
@@ -14,7 +15,10 @@ const HeaderBar = ({ header }) => (
         {header.name}
       </span>
     </div>
-    <PrimaryNav />
+    <div className="flex items-center gap-8">
+      <PrimaryNav />
+      <LanguageSwitcher />
+    </div>
   </header>
 );
 

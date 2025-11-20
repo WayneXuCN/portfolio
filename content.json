@@ -1,255 +1,522 @@
 {
-  "site": {
-    "title": "Wenjie Xu - Portfolio",
-    "author": "徐文杰",
-    "favicon": {
-      "ico": "https://xwj770427414.oss-cn-beijing.aliyuncs.com/img/favicon.ico",
-      "appleTouchIcon": "https://xwj770427414.oss-cn-beijing.aliyuncs.com/img/prof_pic.jpg"
-    }
-  },
-  "header": {
-    "avatar": "https://xwj770427414.oss-cn-beijing.aliyuncs.com/img/prof_pic.jpg",
-    "name": "徐文杰"
-  },
-  "hero": {
-    "subtitle": "WENJIE XU",
-    "title": "保持好奇<br class=\"sm:hidden\"> 也保持自在",
-    "description": "Collaborating with diverse people is something I truly enjoy.<br />If you want to <a href=\"mailto:wenjie.xu.cn@outlook.com\" class=\"underline\">contact me</a>, I'll be happy to connect!"
-  },
-  "websites": {
-    "title": "Websites",
-    "items": [
-      {
-        "id": "personal",
-        "title": "个人网站",
-        "subtitle": "我的详细个人介绍网站",
-        "image": "https://picsum.photos/seed/personal/600/350.jpg",
-        "url": "#",
-        "description": "关于我的更多信息"
-      },
-      {
-        "id": "MyWork",
-        "title": "MyWork",
-        "subtitle": "Markdown编辑器",
-        "image": "https://picsum.photos/seed/MyWork/600/350.jpg",
-        "url": "#",
-        "description": "轻量级的Markdown编辑工具"
-      },
-      {
-        "id": "blog",
-        "title": "技术博客",
-        "subtitle": "我的技术分享",
-        "image": "https://picsum.photos/seed/blog/600/350.jpg",
-        "url": "#",
-        "description": "分享前端开发和其他技术内容"
-      },
-      {
-        "id": "projects",
-        "title": "项目集合",
-        "subtitle": "作品集",
-        "image": "https://picsum.photos/seed/projects/600/350.jpg",
-        "url": "#",
-        "description": "查看我的所有项目"
+  "zh": {
+    "site": {
+      "title": "Wenjie Xu - Portfolio",
+      "author": "徐文杰",
+      "favicon": {
+        "ico": "https://xwj770427414.oss-cn-beijing.aliyuncs.com/img/favicon.ico",
+        "appleTouchIcon": "https://xwj770427414.oss-cn-beijing.aliyuncs.com/img/prof_pic.jpg"
       }
-    ]
-  },
-  "featuredPosts": {
-    "title": "Featured Posts",
-    "items": [
-      {
-        "id": "how-MyWork-works",
-        "title": "How MyWork Works?",
-        "image": "https://picsum.photos/seed/chart123/600/350.jpg",
-        "url": "#",
-        "description": "深入了解MyWork的工作原理和设计理念",
-        "overlayColor": "bg-black",
-        "overlayOpacity": "bg-opacity-70"
-      },
-      {
-        "id": "about-MyWork",
-        "title": "About MyWork",
-        "image": "https://picsum.photos/seed/about456/600/350.jpg",
-        "url": "#",
-        "description": "MyWork的故事和使命",
-        "overlayColor": "bg-yellow-500",
-        "overlayOpacity": "bg-opacity-80"
-      },
-      {
-        "id": "markdown-syntax",
-        "title": "Markdown Syntax Guide",
-        "image": "https://picsum.photos/seed/markdown789/600/350.jpg",
-        "url": "#",
-        "description": "完整的Markdown语法参考指南",
-        "overlayColor": "bg-blue-900",
-        "overlayOpacity": "bg-opacity-80"
-      },
-      {
-        "id": "math-typesetting",
-        "title": "Math Typesetting - use Mathematical notation in blog posts",
-        "image": "https://picsum.photos/seed/math101/600/350.jpg",
-        "url": "#",
-        "description": "在博客中使用数学公式和符号",
-        "overlayColor": "bg-black",
-        "overlayOpacity": "bg-opacity-80"
-      },
-      {
-        "id": "rich-content",
-        "title": "Rich Content",
-        "image": "https://picsum.photos/seed/richcontent202/600/350.jpg",
-        "url": "#",
-        "description": "创建丰富多样的博客内容",
-        "overlayColor": "bg-black",
-        "overlayOpacity": "bg-opacity-80"
-      }
-    ],
-    "seeAllText": "See All Posts",
-    "seeAllUrl": "#"
-  },
-  "footer": {
-    "copyright": "© 2025 All Rights Reserved. 备案号: 待添加",
-    "socialLinks": [
-      {
-        "icon": "fas fa-globe",
-        "url": "https://waynexucn.github.io/",
-        "title": "个人网站"
-      },
-      {
-        "icon": "far fa-envelope",
-        "url": "mailto:wenjie.xu.cn@outlook.com",
-        "title": "邮箱"
-      },
-      {
-        "icon": "fab fa-github",
-        "url": "https://github.com/WayneXuCN",
-        "title": "GitHub"
-      },
-      {
-        "icon": "fab fa-weibo",
-        "url": "https://weibo.com/u/6577473146",
-        "title": "微博"
-      }
-    ]
-  },
-  "about": {
-    "hero": {
-      "subtitle": "STORY",
-      "title": "以个人品牌为实验室，串联内容、工具与产品",
-      "description": "十年+产品与内容经验，始终在探索：如何用 <span class=\"underline\">清晰的结构</span> 讲述复杂的主题？如何让工具真正帮助创作者？"
     },
-    "timeline": {
-      "subtitle": "TIMELINE",
-      "title": "个人轨迹",
-      "period": "2015 - Now",
+    "nav": [
+      { "label": "首页", "href": "index.html" },
+      { "label": "关于", "href": "about.html" },
+      { "label": "联系", "href": "contact.html" }
+    ],
+    "header": {
+      "avatar": "https://xwj770427414.oss-cn-beijing.aliyuncs.com/img/prof_pic.jpg",
+      "name": "徐文杰"
+    },
+    "hero": {
+      "subtitle": "WENJIE XU",
+      "title": "保持好奇<br class=\"sm:hidden\"> 也保持自在",
+      "description": "Collaborating with diverse people is something I truly enjoy.<br />If you want to <a href=\"mailto:wenjie.xu.cn@outlook.com\" class=\"underline\">contact me</a>, I'll be happy to connect!"
+    },
+    "websites": {
+      "title": "Websites",
       "items": [
         {
-          "period": "NOW",
-          "title": "一人公司实验 · Content x SaaS",
-          "description": "围绕 MyWork、知识型产品和咨询项目，搭建自驱增长的业务组合。每一个版本都在验证：小而美的工具是否能成为创作者的倍增器。"
+          "id": "personal",
+          "title": "个人网站",
+          "subtitle": "我的详细个人介绍网站",
+          "image": "https://picsum.photos/seed/personal/600/350.jpg",
+          "url": "#",
+          "description": "关于我的更多信息"
         },
         {
-          "period": "2019 - 2023",
-          "title": "产品负责人 · 多元行业",
-          "description": "在教育、B2B工具与创作者社区等领域统筹产品策略，带领跨职能团队将「抽象灵感」转成真正上线的体验。"
+          "id": "MyWork",
+          "title": "MyWork",
+          "subtitle": "Markdown编辑器",
+          "image": "https://picsum.photos/seed/MyWork/600/350.jpg",
+          "url": "#",
+          "description": "轻量级的Markdown编辑工具"
         },
         {
-          "period": "2015 - 2018",
-          "title": "品牌叙事与内容运营",
-          "description": "在媒体与品牌侧学习用内容连接用户——包括深度报道、活动策划与知识服务产品。"
+          "id": "blog",
+          "title": "技术博客",
+          "subtitle": "我的技术分享",
+          "image": "https://picsum.photos/seed/blog/600/350.jpg",
+          "url": "#",
+          "description": "分享前端开发和其他技术内容"
+        },
+        {
+          "id": "projects",
+          "title": "项目集合",
+          "subtitle": "作品集",
+          "image": "https://picsum.photos/seed/projects/600/350.jpg",
+          "url": "#",
+          "description": "查看我的所有项目"
         }
       ]
     },
-    "values": {
-      "subtitle": "VALUES",
-      "title": "价值观与工作方式",
+    "featuredPosts": {
+      "title": "Featured Posts",
       "items": [
         {
-          "label": "结构优先",
-          "text": "任何想法都先落在笔记，再进入原型。"
+          "id": "how-MyWork-works",
+          "title": "How MyWork Works?",
+          "image": "https://picsum.photos/seed/chart123/600/350.jpg",
+          "url": "#",
+          "description": "深入了解MyWork的工作原理和设计理念",
+          "overlayColor": "bg-black",
+          "overlayOpacity": "bg-opacity-70"
         },
         {
-          "label": "质感导向",
-          "text": "界面、语言与动效共同定义体验。"
+          "id": "about-MyWork",
+          "title": "About MyWork",
+          "image": "https://picsum.photos/seed/about456/600/350.jpg",
+          "url": "#",
+          "description": "MyWork的故事和使命",
+          "overlayColor": "bg-yellow-500",
+          "overlayOpacity": "bg-opacity-80"
         },
         {
-          "label": "公开构建",
-          "text": "把过程放到公开渠道，收集更真实的反馈。"
+          "id": "markdown-syntax",
+          "title": "Markdown Syntax Guide",
+          "image": "https://picsum.photos/seed/markdown789/600/350.jpg",
+          "url": "#",
+          "description": "完整的Markdown语法参考指南",
+          "overlayColor": "bg-blue-900",
+          "overlayOpacity": "bg-opacity-80"
+        },
+        {
+          "id": "math-typesetting",
+          "title": "Math Typesetting - use Mathematical notation in blog posts",
+          "image": "https://picsum.photos/seed/math101/600/350.jpg",
+          "url": "#",
+          "description": "在博客中使用数学公式和符号",
+          "overlayColor": "bg-black",
+          "overlayOpacity": "bg-opacity-80"
+        },
+        {
+          "id": "rich-content",
+          "title": "Rich Content",
+          "image": "https://picsum.photos/seed/richcontent202/600/350.jpg",
+          "url": "#",
+          "description": "创建丰富多样的博客内容",
+          "overlayColor": "bg-black",
+          "overlayOpacity": "bg-opacity-80"
         }
       ],
-      "product": {
-        "subtitle": "MyWork",
-        "title": "为什么要做一款新的 Markdown 编辑器？",
-        "description": "它是创作者的「第二大脑控台」。我想把语法提示、结构指引、资产管理整合在一个清爽的界面里，让创作像调色一样自由。",
-        "linkText": "查看最新版本",
-        "linkUrl": "contact.html"
-      }
+      "seeAllText": "See All Posts",
+      "seeAllUrl": "#"
     },
-    "philosophy": {
-      "subtitle": "PHILOSOPHY",
-      "title": "「创造具备审美与实用感的产品，是终身课题。」",
-      "description": "若你也在打造工具、课程或内容品牌，欢迎随时交流。我们可以把复杂的项目拆成一组清晰可执行的 Roadmap。",
-      "ctaText": "开始对话",
-      "ctaUrl": "contact.html"
-    }
-  },
-  "contact": {
-    "hero": {
-      "subtitle": "LET'S COLLAB",
-      "title": "保持对话，让创意落地",
-      "description": "业务合作、产品咨询或内容共创都可以在这里发起。"
+    "footer": {
+      "copyright": "© 2025 All Rights Reserved. 备案号: 待添加",
+      "socialLinks": [
+        {
+          "icon": "fas fa-globe",
+          "url": "https://waynexucn.github.io/",
+          "title": "个人网站"
+        },
+        {
+          "icon": "far fa-envelope",
+          "url": "mailto:wenjie.xu.cn@outlook.com",
+          "title": "邮箱"
+        },
+        {
+          "icon": "fab fa-github",
+          "url": "https://github.com/WayneXuCN",
+          "title": "GitHub"
+        },
+        {
+          "icon": "fab fa-weibo",
+          "url": "https://weibo.com/u/6577473146",
+          "title": "微博"
+        }
+      ]
     },
-    "cards": {
-      "email": {
-        "subtitle": "EMAIL",
-        "address": "wenjie.xu.cn@outlook.com",
-        "note": "无论是项目合作、技术探讨，还是简单的问候，都欢迎随时来信。"
+    "about": {
+      "hero": {
+        "subtitle": "STORY",
+        "title": "以个人品牌为实验室，串联内容、工具与产品",
+        "description": "十年+产品与内容经验，始终在探索：如何用 <span class=\"underline\">清晰的结构</span> 讲述复杂的主题？如何让工具真正帮助创作者？"
       },
-      "social": {
-        "subtitle": "SOCIAL",
+      "timeline": {
+        "subtitle": "TIMELINE",
+        "title": "个人轨迹",
+        "period": "2015 - Now",
         "items": [
           {
-            "label": "GitHub",
-            "url": "https://github.com/WayneXuCN",
-            "icon": "fab fa-github",
-            "handle": "@WayneXuCN"
+            "period": "NOW",
+            "title": "一人公司实验 · Content x SaaS",
+            "description": "围绕 MyWork、知识型产品和咨询项目，搭建自驱增长的业务组合。每一个版本都在验证：小而美的工具是否能成为创作者的倍增器。"
           },
           {
-            "label": "Weibo",
-            "url": "https://weibo.com/u/6577473146",
-            "icon": "fab fa-weibo",
-            "handle": "@WayneXuCN"
+            "period": "2019 - 2023",
+            "title": "产品负责人 · 多元行业",
+            "description": "在教育、B2B工具与创作者社区等领域统筹产品策略，带领跨职能团队将「抽象灵感」转成真正上线的体验。"
           },
           {
-            "label": "Personal Site",
-            "url": "https://waynexucn.github.io/",
-            "icon": "fas fa-globe",
-            "handle": "waynexucn.github.io"
+            "period": "2015 - 2018",
+            "title": "品牌叙事与内容运营",
+            "description": "在媒体与品牌侧学习用内容连接用户——包括深度报道、活动策划与知识服务产品。"
+          }
+        ]
+      },
+      "values": {
+        "subtitle": "VALUES",
+        "title": "价值观与工作方式",
+        "items": [
+          {
+            "label": "结构优先",
+            "text": "任何想法都先落在笔记，再进入原型。"
+          },
+          {
+            "label": "质感导向",
+            "text": "界面、语言与动效共同定义体验。"
+          },
+          {
+            "label": "公开构建",
+            "text": "把过程放到公开渠道，收集更真实的反馈。"
+          }
+        ],
+        "product": {
+          "subtitle": "MyWork",
+          "title": "为什么要做一款新的 Markdown 编辑器？",
+          "description": "它是创作者的「第二大脑控台」。我想把语法提示、结构指引、资产管理整合在一个清爽的界面里，让创作像调色一样自由。",
+          "linkText": "查看最新版本",
+          "linkUrl": "contact.html"
+        }
+      },
+      "philosophy": {
+        "subtitle": "PHILOSOPHY",
+        "title": "「创造具备审美与实用感的产品，是终身课题。」",
+        "description": "若你也在打造工具、课程或内容品牌，欢迎随时交流。我们可以把复杂的项目拆成一组清晰可执行的 Roadmap。",
+        "ctaText": "开始对话",
+        "ctaUrl": "contact.html"
+      }
+    },
+    "contact": {
+      "hero": {
+        "subtitle": "LET'S COLLAB",
+        "title": "保持对话，让创意落地",
+        "description": "业务合作、产品咨询或内容共创都可以在这里发起。"
+      },
+      "cards": {
+        "email": {
+          "subtitle": "EMAIL",
+          "address": "wenjie.xu.cn@outlook.com",
+          "note": "无论是项目合作、技术探讨，还是简单的问候，都欢迎随时来信。"
+        },
+        "social": {
+          "subtitle": "SOCIAL",
+          "items": [
+            {
+              "label": "GitHub",
+              "url": "https://github.com/WayneXuCN",
+              "icon": "fab fa-github",
+              "handle": "@WayneXuCN"
+            },
+            {
+              "label": "Weibo",
+              "url": "https://weibo.com/u/6577473146",
+              "icon": "fab fa-weibo",
+              "handle": "@WayneXuCN"
+            },
+            {
+              "label": "Personal Site",
+              "url": "https://waynexucn.github.io/",
+              "icon": "fas fa-globe",
+              "handle": "waynexucn.github.io"
+            }
+          ]
+        }
+      },
+      "form": {
+        "subtitle": "PROJECT INTAKE",
+        "title": "写下你的想法",
+        "note": "平均响应时间：<strong class=\"text-gray-700\">12h</strong>"
+      },
+      "services": {
+        "items": [
+          {
+            "subtitle": "CONSULTING",
+            "title": "产品诊断",
+            "description": "快速梳理产品结构、体验断点与迭代优先级。"
+          },
+          {
+            "subtitle": "CONTENT",
+            "title": "联合创作",
+            "description": "共建课程、白皮书或品牌叙事，确保有温度也有事实。"
+          },
+          {
+            "subtitle": "TOOLS",
+            "title": "MyWork",
+            "description": "如果你想为创作工具提供建议，我会第一时间优先处理。"
           }
         ]
       }
+    }
+  },
+  "en": {
+    "site": {
+      "title": "Wenjie Xu - Portfolio",
+      "author": "Wenjie Xu",
+      "favicon": {
+        "ico": "https://xwj770427414.oss-cn-beijing.aliyuncs.com/img/favicon.ico",
+        "appleTouchIcon": "https://xwj770427414.oss-cn-beijing.aliyuncs.com/img/prof_pic.jpg"
+      }
     },
-    "form": {
-      "subtitle": "PROJECT INTAKE",
-      "title": "写下你的想法",
-      "note": "平均响应时间：<strong class=\"text-gray-700\">12h</strong>"
+    "nav": [
+      { "label": "Home", "href": "index.html" },
+      { "label": "About", "href": "about.html" },
+      { "label": "Contact", "href": "contact.html" }
+    ],
+    "header": {
+      "avatar": "https://xwj770427414.oss-cn-beijing.aliyuncs.com/img/prof_pic.jpg",
+      "name": "Wenjie Xu"
     },
-    "services": {
+    "hero": {
+      "subtitle": "WENJIE XU",
+      "title": "Stay Curious<br class=\"sm:hidden\"> Stay Authentic",
+      "description": "Collaborating with diverse people is something I truly enjoy.<br />If you want to <a href=\"mailto:wenjie.xu.cn@outlook.com\" class=\"underline\">contact me</a>, I'll be happy to connect!"
+    },
+    "websites": {
+      "title": "Websites",
       "items": [
         {
-          "subtitle": "CONSULTING",
-          "title": "产品诊断",
-          "description": "快速梳理产品结构、体验断点与迭代优先级。"
+          "id": "personal",
+          "title": "Personal Site",
+          "subtitle": "My Detailed Personal Introduction",
+          "image": "https://picsum.photos/seed/personal/600/350.jpg",
+          "url": "#",
+          "description": "More information about me"
         },
         {
-          "subtitle": "CONTENT",
-          "title": "联合创作",
-          "description": "共建课程、白皮书或品牌叙事，确保有温度也有事实。"
-        },
-        {
-          "subtitle": "TOOLS",
+          "id": "MyWork",
           "title": "MyWork",
-          "description": "如果你想为创作工具提供建议，我会第一时间优先处理。"
+          "subtitle": "Markdown Editor",
+          "image": "https://picsum.photos/seed/MyWork/600/350.jpg",
+          "url": "#",
+          "description": "A lightweight Markdown editing tool"
+        },
+        {
+          "id": "blog",
+          "title": "Tech Blog",
+          "subtitle": "My Technical Sharing",
+          "image": "https://picsum.photos/seed/blog/600/350.jpg",
+          "url": "#",
+          "description": "Sharing frontend development and other tech content"
+        },
+        {
+          "id": "projects",
+          "title": "Projects",
+          "subtitle": "Portfolio",
+          "image": "https://picsum.photos/seed/projects/600/350.jpg",
+          "url": "#",
+          "description": "View all my projects"
         }
       ]
+    },
+    "featuredPosts": {
+      "title": "Featured Posts",
+      "items": [
+        {
+          "id": "how-MyWork-works",
+          "title": "How MyWork Works?",
+          "image": "https://picsum.photos/seed/chart123/600/350.jpg",
+          "url": "#",
+          "description": "Deep dive into MyWork's principles and design philosophy",
+          "overlayColor": "bg-black",
+          "overlayOpacity": "bg-opacity-70"
+        },
+        {
+          "id": "about-MyWork",
+          "title": "About MyWork",
+          "image": "https://picsum.photos/seed/about456/600/350.jpg",
+          "url": "#",
+          "description": "The story and mission of MyWork",
+          "overlayColor": "bg-yellow-500",
+          "overlayOpacity": "bg-opacity-80"
+        },
+        {
+          "id": "markdown-syntax",
+          "title": "Markdown Syntax Guide",
+          "image": "https://picsum.photos/seed/markdown789/600/350.jpg",
+          "url": "#",
+          "description": "Complete Markdown syntax reference guide",
+          "overlayColor": "bg-blue-900",
+          "overlayOpacity": "bg-opacity-80"
+        },
+        {
+          "id": "math-typesetting",
+          "title": "Math Typesetting - use Mathematical notation in blog posts",
+          "image": "https://picsum.photos/seed/math101/600/350.jpg",
+          "url": "#",
+          "description": "Using mathematical formulas and symbols in blog posts",
+          "overlayColor": "bg-black",
+          "overlayOpacity": "bg-opacity-80"
+        },
+        {
+          "id": "rich-content",
+          "title": "Rich Content",
+          "image": "https://picsum.photos/seed/richcontent202/600/350.jpg",
+          "url": "#",
+          "description": "Creating rich and diverse blog content",
+          "overlayColor": "bg-black",
+          "overlayOpacity": "bg-opacity-80"
+        }
+      ],
+      "seeAllText": "See All Posts",
+      "seeAllUrl": "#"
+    },
+    "footer": {
+      "copyright": "© 2025 All Rights Reserved. ICP: Pending",
+      "socialLinks": [
+        {
+          "icon": "fas fa-globe",
+          "url": "https://waynexucn.github.io/",
+          "title": "Personal Site"
+        },
+        {
+          "icon": "far fa-envelope",
+          "url": "mailto:wenjie.xu.cn@outlook.com",
+          "title": "Email"
+        },
+        {
+          "icon": "fab fa-github",
+          "url": "https://github.com/WayneXuCN",
+          "title": "GitHub"
+        },
+        {
+          "icon": "fab fa-weibo",
+          "url": "https://weibo.com/u/6577473146",
+          "title": "Weibo"
+        }
+      ]
+    },
+    "about": {
+      "hero": {
+        "subtitle": "STORY",
+        "title": "Using Personal Brand as a Lab to Connect Content, Tools, and Products",
+        "description": "10+ years of product and content experience, always exploring: How to tell complex topics with <span class=\"underline\">clear structure</span>? How to make tools truly help creators?"
+      },
+      "timeline": {
+        "subtitle": "TIMELINE",
+        "title": "Personal Trajectory",
+        "period": "2015 - Now",
+        "items": [
+          {
+            "period": "NOW",
+            "title": "One-Person Company Experiment · Content x SaaS",
+            "description": "Building a self-driven growth business portfolio around MyWork, knowledge products, and consulting projects. Every version validates: Can small and beautiful tools become a multiplier for creators?"
+          },
+          {
+            "period": "2019 - 2023",
+            "title": "Product Lead · Diverse Industries",
+            "description": "Coordinated product strategies in education, B2B tools, and creator communities, leading cross-functional teams to turn 'abstract inspiration' into live experiences."
+          },
+          {
+            "period": "2015 - 2018",
+            "title": "Brand Narrative & Content Operations",
+            "description": "Learned to connect users with content on the media and brand side—including in-depth reporting, event planning, and knowledge service products."
+          }
+        ]
+      },
+      "values": {
+        "subtitle": "VALUES",
+        "title": "Values & Work Style",
+        "items": [
+          {
+            "label": "Structure First",
+            "text": "Any idea lands in notes first, then enters prototype."
+          },
+          {
+            "label": "Quality Oriented",
+            "text": "Interface, language, and motion jointly define experience."
+          },
+          {
+            "label": "Build in Public",
+            "text": "Put the process in public channels to collect more authentic feedback."
+          }
+        ],
+        "product": {
+          "subtitle": "MyWork",
+          "title": "Why build a new Markdown editor?",
+          "description": "It is the 'Second Brain Console' for creators. I want to integrate syntax hints, structural guidance, and asset management into a clean interface, making creation as free as color mixing.",
+          "linkText": "View Latest Version",
+          "linkUrl": "contact.html"
+        }
+      },
+      "philosophy": {
+        "subtitle": "PHILOSOPHY",
+        "title": "\"Creating products with both aesthetics and utility is a lifelong subject.\"",
+        "description": "If you are also building tools, courses, or content brands, feel free to communicate. We can break down complex projects into a set of clear and executable Roadmaps.",
+        "ctaText": "Start Conversation",
+        "ctaUrl": "contact.html"
+      }
+    },
+    "contact": {
+      "hero": {
+        "subtitle": "LET'S COLLAB",
+        "title": "Keep the Conversation Going, Make Ideas Happen",
+        "description": "Business cooperation, product consulting, or content co-creation can all be initiated here."
+      },
+      "cards": {
+        "email": {
+          "subtitle": "EMAIL",
+          "address": "wenjie.xu.cn@outlook.com",
+          "note": "Whether it's project cooperation, technical discussion, or a simple greeting, you are welcome to write anytime."
+        },
+        "social": {
+          "subtitle": "SOCIAL",
+          "items": [
+            {
+              "label": "GitHub",
+              "url": "https://github.com/WayneXuCN",
+              "icon": "fab fa-github",
+              "handle": "@WayneXuCN"
+            },
+            {
+              "label": "Weibo",
+              "url": "https://weibo.com/u/6577473146",
+              "icon": "fab fa-weibo",
+              "handle": "@WayneXuCN"
+            },
+            {
+              "label": "Personal Site",
+              "url": "https://waynexucn.github.io/",
+              "icon": "fas fa-globe",
+              "handle": "waynexucn.github.io"
+            }
+          ]
+        }
+      },
+      "form": {
+        "subtitle": "PROJECT INTAKE",
+        "title": "Write Down Your Ideas",
+        "note": "Average response time: <strong class=\"text-gray-700\">12h</strong>"
+      },
+      "services": {
+        "items": [
+          {
+            "subtitle": "CONSULTING",
+            "title": "Product Diagnosis",
+            "description": "Quickly sort out product structure, experience breakpoints, and iteration priorities."
+          },
+          {
+            "subtitle": "CONTENT",
+            "title": "Co-Creation",
+            "description": "Co-build courses, white papers, or brand narratives, ensuring both warmth and facts."
+          },
+          {
+            "subtitle": "TOOLS",
+            "title": "MyWork",
+            "description": "If you want to provide suggestions for creation tools, I will prioritize processing them immediately."
+          }
+        ]
+      }
     }
   }
 }

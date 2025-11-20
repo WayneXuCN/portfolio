@@ -1,7 +1,10 @@
 import React from 'react';
-import { NAV_LINKS } from '../lib/content.js';
+import { useLanguage } from '../lib/LanguageContext.jsx';
 
 const PrimaryNav = () => {
+  const { content } = useLanguage();
+  const navLinks = content?.nav || [];
+  
   const currentPath =
     typeof window !== 'undefined' ? window.location.pathname : '';
 
@@ -18,7 +21,7 @@ const PrimaryNav = () => {
 
   return (
     <nav className="flex flex-wrap items-center gap-8 text-base font-medium text-gray-600">
-      {NAV_LINKS.map((link, index) => {
+      {navLinks.map((link, index) => {
         const active = isActive(link.href);
         return (
           <React.Fragment key={link.href}>

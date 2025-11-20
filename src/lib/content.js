@@ -1,12 +1,6 @@
 export const CONTENT_URL = 'content.json';
 
-export const NAV_LINKS = [
-  { label: '首页', href: 'index.html' },
-  { label: '关于', href: 'about.html' },
-  { label: '联系', href: 'contact.html' },
-];
-
-export const DEFAULT_CONTENT = {
+const DEFAULT_CONTENT_SINGLE = {
   site: {
     title: 'Wenjie Xu - Personal Website',
     author: '徐文杰',
@@ -15,6 +9,11 @@ export const DEFAULT_CONTENT = {
       appleTouchIcon: 'apple-touch-icon.png',
     },
   },
+  nav: [
+    { label: '首页', href: 'index.html' },
+    { label: '关于', href: 'about.html' },
+    { label: '联系', href: 'contact.html' },
+  ],
   header: {
     avatar: 'https://picsum.photos/seed/avatar123/50/50.jpg',
     name: '徐文杰',
@@ -99,6 +98,11 @@ export const DEFAULT_CONTENT = {
   },
 };
 
+export const DEFAULT_CONTENT = {
+  zh: DEFAULT_CONTENT_SINGLE,
+  en: DEFAULT_CONTENT_SINGLE,
+};
+
 const deepClone = (value) => {
   if (typeof structuredClone === 'function') {
     return structuredClone(value);
@@ -116,66 +120,62 @@ const mergeListSection = (section = {}, fallback = {}) => ({
   items: Array.isArray(section?.items) ? section.items : fallback.items,
 });
 
-export const mergeContent = (data = {}) => {
-  const site = mergeSection(data.site, DEFAULT_CONTENT.site);
-  const header = mergeSection(data.header, DEFAULT_CONTENT.header);
-  const hero = mergeSection(data.hero, DEFAULT_CONTENT.hero);
-  const websites = mergeListSection(data.websites, DEFAULT_CONTENT.websites);
+const mergeSingleContent = (data = {}, fallback = {}) => {
+  const site = mergeSection(data.site, fallback.site);
+  const nav = Array.isArray(data.nav) ? data.nav : fallback.nav;
+  const header = mergeSection(data.header, fallback.header);
+  const hero = mergeSection(data.hero, fallback.hero);
+  const websites = mergeListSection(data.websites, fallback.websites);
   const featuredPosts = {
-    ...mergeListSection(data.featuredPosts, DEFAULT_CONTENT.featuredPosts),
-    seeAllText:
-      data.featuredPosts?.seeAllText ??
-      DEFAULT_CONTENT.featuredPosts.seeAllText,
-    seeAllUrl:
-      data.featuredPosts?.seeAllUrl ?? DEFAULT_CONTENT.featuredPosts.seeAllUrl,
+    ...mergeListSection(data.featuredPosts, fallback.featuredPosts),
+    seeAllText: data.featuredPosts?.seeAllText ?? fallback.featuredPosts.seeAllText,
+    seeAllUrl: data.featuredPosts?.seeAllUrl ?? fallback.featuredPosts.seeAllUrl,
   };
   const footer = {
-    ...mergeSection(data.footer, DEFAULT_CONTENT.footer),
+    ...mergeSection(data.footer, fallback.footer),
     socialLinks: Array.isArray(data.footer?.socialLinks)
       ? data.footer.socialLinks
-      : DEFAULT_CONTENT.footer.socialLinks,
+      : fallback.footer.socialLinks,
   };
 
   const about = {
-    hero: mergeSection(data.about?.hero, DEFAULT_CONTENT.about.hero),
-    timeline: mergeListSection(
-      data.about?.timeline,
-      DEFAULT_CONTENT.about.timeline
-    ),
+    hero: mergeSection(data.about?.hero, fallback.about.hero),
+    timeline: mergeListSection(data.about?.timeline, fallback.about.timeline),
     values: {
-      ...mergeListSection(data.about?.values, DEFAULT_CONTENT.about.values),
+      ...mergeListSection(data.about?.values, fallback.about.values),
       product: mergeSection(
         data.about?.values?.product,
-        DEFAULT_CONTENT.about.values.product
+        fallback.about.values.product
       ),
     },
     philosophy: mergeSection(
       data.about?.philosophy,
-      DEFAULT_CONTENT.about.philosophy
+      fallback.about.philosophy
     ),
   };
 
   const contact = {
-    hero: mergeSection(data.contact?.hero, DEFAULT_CONTENT.contact.hero),
+    hero: mergeSection(data.contact?.hero, fallback.contact.hero),
     cards: {
       email: mergeSection(
         data.contact?.cards?.email,
-        DEFAULT_CONTENT.contact.cards.email
+        fallback.contact.cards.email
       ),
       social: mergeListSection(
         data.contact?.cards?.social,
-        DEFAULT_CONTENT.contact.cards.social
+        fallback.contact.cards.social
       ),
     },
-    form: mergeSection(data.contact?.form, DEFAULT_CONTENT.contact.form),
+    form: mergeSection(data.contact?.form, fallback.contact.form),
     services: mergeListSection(
       data.contact?.services,
-      DEFAULT_CONTENT.contact.services
+      fallback.contact.services
     ),
   };
 
   return {
     site,
+    nav,
     header,
     hero,
     websites,
@@ -183,6 +183,13 @@ export const mergeContent = (data = {}) => {
     footer,
     about,
     contact,
+  };
+};
+
+export const mergeContent = (data = {}) => {
+  return {
+    zh: mergeSingleContent(data.zh, DEFAULT_CONTENT.zh),
+    en: mergeSingleContent(data.en, DEFAULT_CONTENT.en),
   };
 };
 

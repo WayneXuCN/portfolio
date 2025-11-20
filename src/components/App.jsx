@@ -8,6 +8,7 @@ import About from './About.jsx';
 import Contact from './Contact.jsx';
 import { applyFavicon } from '../lib/favicon.js';
 import { loadSiteContent } from '../lib/content.js';
+import { LanguageProvider, useLanguage } from '../lib/LanguageContext.jsx';
 
 const LoadingState = () => (
   <div className="flex justify-center items-center h-screen text-gray-600">
@@ -75,29 +76,17 @@ const Home = ({ content }) => {
   );
 };
 
-const App = () => {
-  const [content, setContent] = React.useState(null);
+const MainContent = () => {
+  const { content } = useLanguage();
   const [currentPath, setCurrentPath] = React.useState(
     typeof window !== 'undefined' ? window.location.pathname : ''
   );
 
   React.useEffect(() => {
-    let isMounted = true;
-
-    const bootstrap = async () => {
-      const safeContent = await loadSiteContent();
-      if (!isMounted) return;
-
-      applyFavicon(safeContent.site?.favicon);
-      setContent(safeContent);
-    };
-
-    bootstrap();
-
-    return () => {
-      isMounted = false;
-    };
-  }, []);
+    if (content?.site?.favicon) {
+      applyFavicon(content.site.favicon);
+    }
+  }, [content]);
 
   if (!content) {
     return <LoadingState />;
@@ -111,6 +100,36 @@ const App = () => {
   }
 
   return <Home content={content} />;
+};
+
+const App = () => {
+  const [fullContent, setFullContent] = React.useState(null);
+
+  React.useEffect(() => {
+    let isMounted = true;
+
+    const bootstrap = async () => {
+      const safeContent = await loadSiteContent();
+      if (!isMounted) return;
+      setFullContent(safeContent);
+    };
+
+    bootstrap();
+
+    return () => {
+      isMounted = false;
+    };
+  }, []);
+
+  if (!fullContent) {
+    return <LoadingState />;
+  }
+
+  return (
+    <LanguageProvider content={fullContent}>
+      <MainContent />
+    </LanguageProvider>
+  );
 };
 
 export default App;
