@@ -16,7 +16,7 @@ const HeaderBar = ({ header }) => (
         {header.name}
       </span>
     </div>
-    <div className="flex items-center gap-4 sm:gap-8">
+    <div className="flex flex-wrap justify-center items-center gap-y-4 gap-x-4 sm:gap-8">
       <PrimaryNav />
       <div className="flex items-center gap-2">
         <ThemeToggle />

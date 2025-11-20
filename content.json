@@ -1,10 +1,10 @@
 {
   "zh": {
     "site": {
-      "title": "Wenjie Xu - Portfolio",
+      "title": "高效率工作方法",
       "author": "徐文杰",
-      "description": "Wenjie Xu 的个人作品集，展示精选作品与项目实践。",
-      "keywords": "徐文杰, 作品集, 前端开发, 产品经理, 内容创作",
+      "description": "徐文杰的个人作品集，展示精选作品与项目实践。",
+      "keywords": "徐文杰, 作品集, 工作, 内容创作",
       "favicon": {
         "ico": "https://xwj770427414.oss-cn-beijing.aliyuncs.com/img/favicon.ico",
         "appleTouchIcon": "https://xwj770427414.oss-cn-beijing.aliyuncs.com/img/prof_pic.jpg"
@@ -17,11 +17,13 @@
       },
       {
         "label": "关于",
-        "href": "about.html"
+        "href": "about.html",
+        "hidden": false
       },
       {
         "label": "联系",
-        "href": "contact.html"
+        "href": "contact.html",
+        "hidden": false
       }
     ],
     "header": {
@@ -30,8 +32,8 @@
     },
     "hero": {
       "subtitle": "WENJIE XU",
-      "title": "保持好奇<br class=\"sm:hidden\"> 也保持自在",
-      "description": "Collaborating with diverse people is something I truly enjoy.<br />If you want to <a href=\"mailto:wenjie.xu.cn@outlook.com\" class=\"underline\">contact me</a>, I'll be happy to connect!"
+      "title": "保持好奇<br class=\"sm:hidden\"> 保持自在",
+      "description": "Collaborating with diverse people is something I truly enjoy.<br>If you want to <a href=\"mailto:wenjie.xu.cn@outlook.com\" class=\"underline\">contact me</a>, I'll be happy to connect!"
     },
     "websites": {
       "title": "Websites",
@@ -123,7 +125,7 @@
       "seeAllUrl": "#"
     },
     "footer": {
-      "copyright": "© 2025 All Rights Reserved. 备案号: 待添加",
+      "copyright": "© 2025 徐文杰. 版权所有. 备案号: 苏ICP备2025220926号",
       "socialLinks": [
         {
           "icon": "fas fa-globe",
@@ -300,7 +302,7 @@
   },
   "en": {
     "site": {
-      "title": "Wenjie Xu - Portfolio",
+      "title": "Efficiency Work Methods",
       "author": "Wenjie Xu",
       "description": "Wenjie Xu's personal portfolio, showcasing selected works and projects.",
       "keywords": "Wenjie Xu, Portfolio, Frontend Development, Product Manager, Content Creation",
@@ -316,11 +318,13 @@
       },
       {
         "label": "About",
-        "href": "about.html"
+        "href": "about.html",
+        "hidden": false
       },
       {
         "label": "Contact",
-        "href": "contact.html"
+        "href": "contact.html",
+        "hidden": false
       }
     ],
     "header": {
@@ -330,7 +334,7 @@
     "hero": {
       "subtitle": "WENJIE XU",
       "title": "Stay Curious<br class=\"sm:hidden\"> Stay Authentic",
-      "description": "Collaborating with diverse people is something I truly enjoy.<br />If you want to <a href=\"mailto:wenjie.xu.cn@outlook.com\" class=\"underline\">contact me</a>, I'll be happy to connect!"
+      "description": "Collaborating with diverse people is something I truly enjoy.<br>If you want to <a href=\"mailto:wenjie.xu.cn@outlook.com\" class=\"underline\">contact me</a>, I'll be happy to connect!"
     },
     "websites": {
       "title": "Websites",
@@ -422,7 +426,7 @@
       "seeAllUrl": "#"
     },
     "footer": {
-      "copyright": "© 2025 All Rights Reserved. ICP: Pending",
+      "copyright": "© 2025 Wenjie Xu. All Rights Reserved. ICP: 苏ICP备2025220926号",
       "socialLinks": [
         {
           "icon": "fas fa-globe",
