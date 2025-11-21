@@ -1,22 +1,33 @@
 'use client';
 
-import React, { createContext, useState, useContext, useEffect } from 'react';
+import React, { createContext, useState, useContext, useEffect, useMemo } from 'react';
 import { locales, defaultLocale } from '../locales/config';
 
 const LanguageContext = createContext();
 
-export const LanguageProvider = ({ children }) => {
-  const [language, setLanguage] = useState(defaultLocale);
-  const [content, setContent] = useState(locales[defaultLocale].data);
+// 安全的localStorage操作
+const getStoredLanguage = () => {
+  if (typeof window === 'undefined') return defaultLocale;
+  try {
+    const stored = localStorage.getItem('language');
+    return stored && locales[stored] ? stored : defaultLocale;
+  } catch {
+    return defaultLocale;
+  }
+};
 
-  useEffect(() => {
-    // Check for saved language preference
-    const savedLang = localStorage.getItem('language');
-    if (savedLang && locales[savedLang]) {
-      setLanguage(savedLang);
-      setContent(locales[savedLang].data);
-    }
-  }, []);
+const setStoredLanguage = lang => {
+  if (typeof window === 'undefined') return;
+  try {
+    localStorage.setItem('language', lang);
+  } catch {
+    // 忽略localStorage错误(如隐私模式)
+  }
+};
+
+export const LanguageProvider = ({ children }) => {
+  const [language, setLanguage] = useState(() => getStoredLanguage());
+  const content = useMemo(() => locales[language]?.data, [language]);
 
   const toggleLanguage = () => {
     const localeKeys = Object.keys(locales);
@@ -25,8 +36,7 @@ export const LanguageProvider = ({ children }) => {
     const newLang = localeKeys[nextIndex];
 
     setLanguage(newLang);
-    setContent(locales[newLang].data);
-    localStorage.setItem('language', newLang);
+    setStoredLanguage(newLang);
   };
 
   return (

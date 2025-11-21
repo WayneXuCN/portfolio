@@ -36,12 +36,6 @@ const Contact = ({ content }) => {
     const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
     const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
 
-    if (!serviceId || !templateId || !publicKey) {
-      console.error('EmailJS 环境变量未配置');
-      setStatus('error');
-      return;
-    }
-
     emailjs
       .sendForm(serviceId, templateId, form.current, {
         publicKey: publicKey,

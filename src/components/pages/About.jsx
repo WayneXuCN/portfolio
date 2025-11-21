@@ -63,6 +63,7 @@ const About = ({ content }) => {
             <Link
               href={values.product.linkUrl}
               className='inline-flex items-center text-pink-500 dark:text-pink-400 font-medium underline mt-4'
+              suppressHydrationWarning
             >
               {values.product.linkText} <i className='fas fa-arrow-right ml-2'></i>
             </Link>

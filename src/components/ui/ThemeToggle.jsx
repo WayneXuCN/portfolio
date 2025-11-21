@@ -6,11 +6,14 @@ import { useTheme } from '../../lib/ThemeContext.jsx';
 const ThemeToggle = () => {
   const { theme, toggleTheme } = useTheme();
 
+  const themeLabel = theme === 'light' ? '切换到深色模式' : '切换到浅色模式';
+
   return (
     <button
       onClick={toggleTheme}
-      className='p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors focus:outline-none'
-      aria-label='Toggle Dark Mode'
+      className='p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500'
+      aria-label={themeLabel}
+      title={themeLabel}
     >
       {theme === 'light' ? (
         // Moon icon for light mode (switch to dark)

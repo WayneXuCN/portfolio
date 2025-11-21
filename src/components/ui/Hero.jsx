@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const Hero = ({ subtitle, title, description }) => {
   return (
@@ -9,13 +10,21 @@ const Hero = ({ subtitle, title, description }) => {
       <h2
         className='text-[length:clamp(2.5rem,8vw,5rem)] font-bold mb-8 sm:mb-10 leading-tight display-font tracking-tight rich-text'
         dangerouslySetInnerHTML={{ __html: title }}
+        suppressHydrationWarning
       ></h2>
       <p
         className='text-xl sm:text-2xl mb-6 sm:mb-8 text-gray-700 dark:text-gray-300 max-w-3xl leading-relaxed rich-text'
         dangerouslySetInnerHTML={{ __html: description }}
+        suppressHydrationWarning
       ></p>
     </section>
   );
 };
 
-export default Hero;
+Hero.propTypes = {
+  subtitle: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+};
+
+export default React.memo(Hero);

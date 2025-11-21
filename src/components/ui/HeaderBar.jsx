@@ -1,5 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
+import PropTypes from 'prop-types';
 import PrimaryNav from './PrimaryNav.jsx';
 import LanguageSwitcher from './LanguageSwitcher.jsx';
 import ThemeToggle from './ThemeToggle.jsx';
@@ -29,4 +30,11 @@ const HeaderBar = ({ header }) => (
   </header>
 );
 
-export default HeaderBar;
+HeaderBar.propTypes = {
+  header: PropTypes.shape({
+    avatar: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+  }).isRequired,
+};
+
+export default React.memo(HeaderBar);

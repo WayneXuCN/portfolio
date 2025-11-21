@@ -16,56 +16,68 @@ const UnderlineEffects = () => {
     ];
 
     const DEFAULT_HOVER_COLOR = 'transparent';
-
     const getRandomColor = () => accentColors[Math.floor(Math.random() * accentColors.length)];
 
-    const setUnderlineHoverColor = (element, color) => {
-      element.style.setProperty('--underline-hover-color', color);
-    };
+    // 使用WeakMap存储监听器,避免内存泄漏
+    const elementListeners = new WeakMap();
 
     const bindUnderlineEffect = element => {
       if (!element || element.dataset.underlineBound === 'true') {
         return;
       }
 
-      // Mark as bound to avoid double binding
       element.dataset.underlineBound = 'true';
 
       const onMouseEnter = () => {
-        setUnderlineHoverColor(element, getRandomColor());
+        element.style.setProperty('--underline-hover-color', getRandomColor());
       };
 
       const onMouseLeave = () => {
-        setUnderlineHoverColor(element, DEFAULT_HOVER_COLOR);
+        element.style.setProperty('--underline-hover-color', DEFAULT_HOVER_COLOR);
       };
 
       element.addEventListener('mouseenter', onMouseEnter);
       element.addEventListener('mouseleave', onMouseLeave);
 
-      // Store listeners for potential cleanup (though difficult to fully clean up without weakmaps)
-      element._underlineListeners = { onMouseEnter, onMouseLeave };
+      // 存储监听器以便清理
+      elementListeners.set(element, { onMouseEnter, onMouseLeave });
     };
 
-    const setupRandomUnderlineColors = () => {
-      document.querySelectorAll('.underline').forEach(bindUnderlineEffect);
+    const unbindUnderlineEffect = element => {
+      const listeners = elementListeners.get(element);
+      if (!listeners) return;
+
+      element.removeEventListener('mouseenter', listeners.onMouseEnter);
+      element.removeEventListener('mouseleave', listeners.onMouseLeave);
+      elementListeners.delete(element);
+      delete element.dataset.underlineBound;
     };
 
-    // Initial setup
-    setupRandomUnderlineColors();
+    // 初始化设置
+    const initialElements = document.querySelectorAll('.underline');
+    initialElements.forEach(bindUnderlineEffect);
 
-    // Observer for dynamic content
+    // 监听动态内容变化
     const observer = new MutationObserver(mutations => {
       mutations.forEach(mutation => {
+        // 处理新增节点
         mutation.addedNodes.forEach(node => {
           if (node.nodeType !== Node.ELEMENT_NODE) return;
 
           if (node.matches?.('.underline')) {
             bindUnderlineEffect(node);
           }
+          node.querySelectorAll?.('.underline').forEach(bindUnderlineEffect);
+        });
 
-          if (node.querySelectorAll) {
-            node.querySelectorAll('.underline').forEach(bindUnderlineEffect);
+        // 处理删除节点,清理监听器
+        mutation.removedNodes.forEach(node => {
+          if (node.nodeType !== Node.ELEMENT_NODE) return;
+
+          if (node.matches?.('.underline')) {
+            unbindUnderlineEffect(node);
           }
+          node.querySelectorAll?.('.underline').forEach(unbindUnderlineEffect);
         });
       });
     });
@@ -75,9 +87,13 @@ const UnderlineEffects = () => {
       subtree: true,
     });
 
+    // 清理函数
     return () => {
       observer.disconnect();
-      // We don't aggressively remove listeners here as it might be complex and unnecessary for this simple effect
+      // 清理所有已绑定的监听器
+      document
+        .querySelectorAll('.underline[data-underline-bound="true"]')
+        .forEach(unbindUnderlineEffect);
     };
   }, []);
 

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const SocialLink = ({ link }) => (
   <a
@@ -21,4 +22,13 @@ const SocialLink = ({ link }) => (
   </a>
 );
 
-export default SocialLink;
+SocialLink.propTypes = {
+  link: PropTypes.shape({
+    url: PropTypes.string.isRequired,
+    title: PropTypes.string,
+    icon: PropTypes.string,
+    imageUrl: PropTypes.string,
+  }).isRequired,
+};
+
+export default React.memo(SocialLink);

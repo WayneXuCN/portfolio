@@ -33,7 +33,11 @@ export default function NotFound() {
             </h3>
             <p className='text-gray-600 dark:text-gray-400 text-sm'>
               浏览
-              <Link href='/about' className='underline ml-1 hover:text-black dark:hover:text-white'>
+              <Link
+                href='/about'
+                className='underline ml-1 hover:text-black dark:hover:text-white'
+                suppressHydrationWarning
+              >
                 关于页
               </Link>
               了解正在进行的实验与作品
@@ -48,6 +52,7 @@ export default function NotFound() {
               <a
                 className='underline ml-1 hover:text-black dark:hover:text-white'
                 href='mailto:wenjie.xu.cn@outlook.com'
+                suppressHydrationWarning
               >
                 发送邮件
               </a>

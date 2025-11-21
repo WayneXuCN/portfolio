@@ -1,12 +1,14 @@
 import React from 'react';
 import Image from 'next/image';
+import PropTypes from 'prop-types';
 
 const FeaturedPostItem = ({ item }) => (
   <a
     href={item.url}
     target='_blank'
     rel='noopener noreferrer'
-    className='relative block overflow-hidden rounded-lg shadow-md card-hover featured-post-item website-item'
+    aria-label={`阅读文章: ${item.title}`}
+    className='relative block overflow-hidden rounded-lg shadow-md card-hover featured-post-item website-item focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black dark:focus:ring-white'
   >
     <div className='relative w-full h-64'>
       <Image
@@ -30,4 +32,16 @@ const FeaturedPostItem = ({ item }) => (
   </a>
 );
 
-export default FeaturedPostItem;
+FeaturedPostItem.propTypes = {
+  item: PropTypes.shape({
+    id: PropTypes.string,
+    title: PropTypes.string.isRequired,
+    image: PropTypes.string.isRequired,
+    url: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+    overlayColor: PropTypes.string,
+    overlayOpacity: PropTypes.string,
+  }).isRequired,
+};
+
+export default React.memo(FeaturedPostItem);

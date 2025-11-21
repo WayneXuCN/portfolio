@@ -1,12 +1,14 @@
 import React from 'react';
 import Image from 'next/image';
+import PropTypes from 'prop-types';
 
 const WebsiteItem = ({ item }) => (
   <a
     href={item.url}
     target='_blank'
     rel='noopener noreferrer'
-    className='relative block overflow-hidden rounded-lg shadow-md card-hover portfolio-item website-item'
+    aria-label={`访问 ${item.title}: ${item.description}`}
+    className='relative block overflow-hidden rounded-lg shadow-md card-hover portfolio-item website-item focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black dark:focus:ring-white'
   >
     <div className='relative w-full h-64'>
       <Image
@@ -28,4 +30,14 @@ const WebsiteItem = ({ item }) => (
   </a>
 );
 
-export default WebsiteItem;
+WebsiteItem.propTypes = {
+  item: PropTypes.shape({
+    id: PropTypes.string,
+    title: PropTypes.string.isRequired,
+    image: PropTypes.string.isRequired,
+    url: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+  }).isRequired,
+};
+
+export default React.memo(WebsiteItem);

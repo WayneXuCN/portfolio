@@ -288,7 +288,7 @@
                 {
                     "subtitle": "Research",
                     "title": "风险建模",
-                    "description": "复杂系统的风险评估与仿真"
+                    "description": "复杂系统风险评估与仿真"
                 },
                 {
                     "subtitle": "Analysis",
@@ -298,7 +298,7 @@
                 {
                     "subtitle": "Data",
                     "title": "数据洞察",
-                    "description": "多源异构数据的挖掘与可视化"
+                    "description": "多源异构数据挖掘与可视化"
                 }
             ]
         }
