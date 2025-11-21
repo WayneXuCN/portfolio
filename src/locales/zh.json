@@ -17,7 +17,7 @@
         {
             "label": "关于",
             "href": "about.html",
-            "hidden": false
+            "hidden": true
         },
         {
             "label": "联系",
@@ -32,7 +32,7 @@
     "hero": {
         "subtitle": "WENJIE XU",
         "title": "<span class=\"inline-block\">保持好奇</span> <span class=\"inline-block\">保持自在</span>",
-        "description": "Collaborating with diverse people is something I truly enjoy.<br>If you want to <a href=\"mailto:wenjie.xu.cn@outlook.com\" class=\"underline\">contact me</a>, I'll be happy to connect!"
+        "description": "与来自不同领域的人合作，总能带来新的可能。<br>如果你希望<a href=\"mailto:wenjie.xu.cn@outlook.com\" class=\"underline\">联系我</a>，我很乐意与你交流！"
     },
     "websites": {
         "title": "Websites",
@@ -156,61 +156,61 @@
     "about": {
         "hero": {
             "subtitle": "STORY",
-            "title": "以个人品牌为实验室，串联内容、工具与产品",
-            "description": "十年+产品与内容经验，始终在探索：如何用 <span class=\"underline\">清晰的结构</span> 讲述复杂的主题？如何让工具真正帮助创作者？"
+            "title": "<span class=\"inline-block\">透视复杂</span> <span class=\"inline-block\">重构韧性</span>",
+            "description": "<span class=\"underline\">风险</span>是万物互联的阴影。我试图在混沌的演化中，寻找系统安全的边界"
         },
         "timeline": {
-            "subtitle": "TIMELINE",
-            "title": "个人轨迹",
-            "period": "2015 - Now",
+            "subtitle": "RESEARCH FOCUS",
+            "title": "研究重点",
+            "period": "Key Areas",
             "items": [
                 {
-                    "period": "NOW",
-                    "title": "一人公司实验 · Content x SaaS",
-                    "description": "围绕 MyWork、知识型产品和咨询项目，搭建自驱增长的业务组合。每一个版本都在验证：小而美的工具是否能成为创作者的倍增器。"
+                    "period": "01",
+                    "title": "系统复杂性与级联失效",
+                    "description": "跳出单一设施的视角，关注能源、交通等网络之间的耦合关系。研究风险如何在异构网络中传播，以及如何识别引发系统崩溃的“关键节点”。"
                 },
                 {
-                    "period": "2019 - 2023",
-                    "title": "产品负责人 · 多元行业",
-                    "description": "在教育、B2B工具与创作者社区等领域统筹产品策略，带领跨职能团队将「抽象灵感」转成真正上线的体验。"
+                    "period": "02",
+                    "title": "数据驱动的韧性评估",
+                    "description": "理论模型需要真实数据的支撑。利用多源异构数据（时空轨迹、传感器日志等），构建动态的韧性评估指标，让“安全”变得可度量。"
                 },
                 {
-                    "period": "2015 - 2018",
-                    "title": "品牌叙事与内容运营",
-                    "description": "在媒体与品牌侧学习用内容连接用户——包括深度报道、活动策划与知识服务产品。"
+                    "period": "03",
+                    "title": "应急管理与优化决策",
+                    "description": "从“预测风险”走向“管理风险”。结合运筹学方法，研究在资源受限和信息不完备的极端场景下，如何制定最优的恢复策略。"
                 }
             ]
         },
         "values": {
-            "subtitle": "VALUES",
-            "title": "价值观与工作方式",
+            "subtitle": "METHODOLOGY",
+            "title": "研究范式",
             "items": [
                 {
-                    "label": "结构优先",
-                    "text": "任何想法都先落在笔记，再进入原型。"
+                    "label": "系统思维",
+                    "text": "整体大于部分之和，关注要素间的非线性涌现。"
                 },
                 {
-                    "label": "质感导向",
-                    "text": "界面、语言与动效共同定义体验。"
+                    "label": "计算社会科学",
+                    "text": "用计算的方法重新审视传统的公共管理问题。"
                 },
                 {
-                    "label": "公开构建",
-                    "text": "把过程放到公开渠道，收集更真实的反馈。"
+                    "label": "经世致用",
+                    "text": "学术的终点不是发表，而是为现实决策提供逻辑支撑。"
                 }
             ],
             "product": {
-                "subtitle": "MyWork",
-                "title": "为什么要做一款新的 Markdown 编辑器？",
-                "description": "它是创作者的「第二大脑控台」。我想把语法提示、结构指引、资产管理整合在一个清爽的界面里，让创作像调色一样自由。",
-                "linkText": "查看最新版本",
-                "linkUrl": "contact.html"
+                "subtitle": "CURRENT THOUGHTS",
+                "title": "关于“数字化”与“学术工具”的思考",
+                "description": "除了风险研究，我也关注科研效率工具的开发。我认为优秀的工具不应仅仅是功能的堆砌，而应是思维流的自然延伸，帮助研究者在信息过载中保持清醒。",
+                "linkText": "查看工具集",
+                "linkUrl": "index.html#websites"
             }
         },
         "philosophy": {
-            "subtitle": "PHILOSOPHY",
-            "title": "「创造具备审美与实用感的产品，是终身课题。」",
-            "description": "若你也在打造工具、课程或内容品牌，欢迎随时交流。我们可以把复杂的项目拆成一组清晰可执行的 Roadmap。",
-            "ctaText": "开始对话",
+            "subtitle": "MOTTO",
+            "title": "「博学笃志，格物明德」",
+            "description": "科研是一场漫长的攀登。如果您对复杂系统、风险决策感兴趣，或有相关数据与课题希望探讨，欢迎随时交流。",
+            "ctaText": "建立联系",
             "ctaUrl": "contact.html"
         }
     },
@@ -286,6 +286,11 @@
         "services": {
             "items": [
                 {
+                    "subtitle": "Data",
+                    "title": "数据洞察",
+                    "description": "多源异构数据挖掘与可视化"
+                },
+                {
                     "subtitle": "Research",
                     "title": "风险建模",
                     "description": "复杂系统风险评估与仿真"
@@ -293,12 +298,7 @@
                 {
                     "subtitle": "Analysis",
                     "title": "决策支持",
-                    "description": "基于运筹优化的资源配置策略"
-                },
-                {
-                    "subtitle": "Data",
-                    "title": "数据洞察",
-                    "description": "多源异构数据挖掘与可视化"
+                    "description": "不确定性下的应对策略与战略规划"
                 }
             ]
         }

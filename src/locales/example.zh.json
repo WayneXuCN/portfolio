@@ -1,0 +1,301 @@
+{
+    "site": {
+        "title": "Efficiency Work Methods",
+        "author": "Studio",
+        "description": "A concise portfolio of selected work, products, and experiments.",
+        "keywords": "portfolio, product design, content, tools, studio",
+        "favicon": {
+            "ico": "/assets/favicon.ico",
+            "appleTouchIcon": "/assets/avatar.jpg"
+        }
+    },
+    "nav": [
+        {
+            "label": "首页",
+            "href": "index.html"
+        },
+        {
+            "label": "关于",
+            "href": "about.html",
+            "hidden": false
+        },
+        {
+            "label": "联系",
+            "href": "contact.html",
+            "hidden": false
+        }
+    ],
+    "header": {
+        "avatar": "/assets/avatar.jpg",
+        "name": "Studio"
+    },
+    "hero": {
+        "subtitle": "EFFICIENCY STUDIO",
+        "title": "保持专注<br class=\"sm:hidden\"> 保持克制",
+        "description": "与擅长的人一起，把想法变成可复用的系统。<br>如果你有项目或灵感，欢迎从 <a href=\"contact.html\" class=\"underline\">这里</a> 开始谈起。"
+    },
+    "websites": {
+        "title": "作品与站点",
+        "items": [
+            {
+                "id": "personal",
+                "title": "Studio Home",
+                "subtitle": "关于这个实验室",
+                "image": "https://picsum.photos/seed/personal/600/350.jpg",
+                "url": "#",
+                "description": "背景、方法与正在进行的方向。"
+            },
+            {
+                "id": "MyWork",
+                "title": "MyWork",
+                "subtitle": "专注写作的 Markdown 工具",
+                "image": "https://picsum.photos/seed/MyWork/600/350.jpg",
+                "url": "#",
+                "description": "为深度创作优化的极简编辑器。"
+            },
+            {
+                "id": "blog",
+                "title": "Notes",
+                "subtitle": "技术与产品札记",
+                "image": "https://picsum.photos/seed/blog/600/350.jpg",
+                "url": "#",
+                "description": "记录前端、产品与工具设计的思考。"
+            },
+            {
+                "id": "projects",
+                "title": "Projects",
+                "subtitle": "项目集合",
+                "image": "https://picsum.photos/seed/projects/600/350.jpg",
+                "url": "#",
+                "description": "精选项目与长期实验。"
+            }
+        ]
+    },
+    "featuredPosts": {
+        "title": "精选内容",
+        "items": [
+            {
+                "id": "how-MyWork-works",
+                "title": "Inside MyWork",
+                "image": "https://picsum.photos/seed/chart123/600/350.jpg",
+                "url": "#",
+                "description": "从架构到交互，拆解这款写作工具的设计取舍。",
+                "overlayColor": "bg-black",
+                "overlayOpacity": "bg-opacity-70"
+            },
+            {
+                "id": "about-MyWork",
+                "title": "Why MyWork",
+                "image": "https://picsum.photos/seed/about456/600/350.jpg",
+                "url": "#",
+                "description": "它要解决什么问题，以及不做什么。",
+                "overlayColor": "bg-yellow-500",
+                "overlayOpacity": "bg-opacity-80"
+            },
+            {
+                "id": "markdown-syntax",
+                "title": "Markdown 手册",
+                "image": "https://picsum.photos/seed/markdown789/600/350.jpg",
+                "url": "#",
+                "description": "高频语法与常见写法，一页快速查阅。",
+                "overlayColor": "bg-blue-900",
+                "overlayOpacity": "bg-opacity-80"
+            },
+            {
+                "id": "math-typesetting",
+                "title": "在文档中写公式",
+                "image": "https://picsum.photos/seed/math101/600/350.jpg",
+                "url": "#",
+                "description": "在博客与文档中优雅地排版数学符号。",
+                "overlayColor": "bg-black",
+                "overlayOpacity": "bg-opacity-80"
+            },
+            {
+                "id": "rich-content",
+                "title": "丰富内容的最小单元",
+                "image": "https://picsum.photos/seed/richcontent202/600/350.jpg",
+                "url": "#",
+                "description": "用一套结构，让文字、图表与链接自然协同。",
+                "overlayColor": "bg-black",
+                "overlayOpacity": "bg-opacity-80"
+            }
+        ],
+        "seeAllText": "查看全部内容",
+        "seeAllUrl": "#"
+    },
+    "footer": {
+        "copyright": "© 2025 Efficiency Studio. All rights reserved.",
+        "socialLinks": [
+            {
+                "icon": "fas fa-globe",
+                "url": "#",
+                "title": "Website"
+            },
+            {
+                "icon": "far fa-envelope",
+                "url": "mailto:hello@example.com",
+                "title": "Email"
+            },
+            {
+                "icon": "fab fa-github",
+                "url": "#",
+                "title": "GitHub"
+            },
+            {
+                "icon": "fab fa-weibo",
+                "url": "#",
+                "title": "Weibo"
+            }
+        ]
+    },
+    "about": {
+        "hero": {
+            "subtitle": "STORY",
+            "title": "把个人品牌当作实验室，连接内容、工具与产品",
+            "description": "在产品与内容领域长期打磨，只关注一件事：如何用清晰结构讲复杂问题？以及，如何让一款小工具，真正成为创作者的倍增器？"
+        },
+        "timeline": {
+            "subtitle": "TIMELINE",
+            "title": "路径与阶段",
+            "period": "2015 - Now",
+            "items": [
+                {
+                    "period": "NOW",
+                    "title": "一人公司实验 · Content × SaaS",
+                    "description": "围绕写作工具、知识产品与咨询服务，搭建自驱成长的业务组合，每一次迭代都在回答：它是否让创作者更轻松？"
+                },
+                {
+                    "period": "2019 - 2023",
+                    "title": "产品与体验负责人",
+                    "description": "在教育、B2B 工具与创作者社群等场景中，统筹产品策略，带领跨职能团队，把抽象灵感落成可体验的产品。"
+                },
+                {
+                    "period": "2015 - 2018",
+                    "title": "品牌叙事与内容运营",
+                    "description": "在媒体与品牌侧连接用户与内容——从深度报道到活动策划，再到知识服务产品。"
+                }
+            ]
+        },
+        "values": {
+            "subtitle": "VALUES",
+            "title": "价值观与工作方式",
+            "items": [
+                {
+                    "label": "结构优先",
+                    "text": "所有想法先进入大纲，再进入视觉和界面。"
+                },
+                {
+                    "label": "体验导向",
+                    "text": "界面、语言与动效共同定义“质感”。"
+                },
+                {
+                    "label": "公开构建",
+                    "text": "尽可能在公开渠道分享过程，以换取更真实的反馈。"
+                }
+            ],
+            "product": {
+                "subtitle": "MyWork",
+                "title": "为什么要做一款新的 Markdown 编辑器？",
+                "description": "它是创作者的“第二工作台”。语法提示、结构引导与素材管理，被收拢在一个干净的界面里，让创作像调色一样自由。",
+                "linkText": "查看最新进展",
+                "linkUrl": "contact.html"
+            }
+        },
+        "philosophy": {
+            "subtitle": "PHILOSOPHY",
+            "title": "「把工具做得好看又好用，是一门终身功课。」",
+            "description": "如果你也在打造工具、课程或内容品牌，欢迎交流。我们可以一起把复杂项目拆解成一组清晰、可执行的 Roadmap。",
+            "ctaText": "开始交流",
+            "ctaUrl": "contact.html"
+        }
+    },
+    "contact": {
+        "hero": {
+            "subtitle": "LET'S COLLAB",
+            "title": "保持对话，让想法落地",
+            "description": "无论是业务合作、产品咨询，还是内容共创，都可以从这里发起。"
+        },
+        "cards": {
+            "email": {
+                "subtitle": "EMAIL",
+                "address": "hello@example.com",
+                "note": "欢迎随时来信，哪怕只是简单几句想法。"
+            },
+            "social": {
+                "subtitle": "SOCIAL",
+                "items": [
+                    {
+                        "label": "GitHub",
+                        "url": "#",
+                        "icon": "fab fa-github",
+                        "handle": "@creator"
+                    },
+                    {
+                        "label": "Weibo",
+                        "url": "#",
+                        "icon": "fab fa-weibo",
+                        "handle": "@studio"
+                    },
+                    {
+                        "label": "Website",
+                        "url": "#",
+                        "icon": "fas fa-globe",
+                        "handle": "studio.site"
+                    }
+                ]
+            }
+        },
+        "form": {
+            "subtitle": "PROJECT INTAKE",
+            "title": "写下你的想法",
+            "note": "平均回复时间：<strong class=\"text-gray-700\">12h 内</strong>"
+        },
+        "actions": {
+            "writeEmail": "发邮件",
+            "copy": "复制",
+            "copied": "已复制"
+        },
+        "formLabels": {
+            "name": "称呼",
+            "email": "邮箱",
+            "topic": "项目类型",
+            "message": "简要说明"
+        },
+        "formPlaceholders": {
+            "name": "例如：小团队 / 品牌 / 个人创作者",
+            "email": "you@example.com",
+            "message": "目标、时间、你期待的结果……"
+        },
+        "formOptions": {
+            "consulting": "产品 / 体验咨询",
+            "content": "内容共创",
+            "friend": "只是想认识一下",
+            "other": "其他想法"
+        },
+        "formSubmit": {
+            "default": "发送",
+            "sending": "发送中…",
+            "success": "已送达，稍后会回复你。",
+            "error": "发送失败，请稍后重试。"
+        },
+        "services": {
+            "items": [
+                {
+                    "subtitle": "CONSULTING",
+                    "title": "产品诊断",
+                    "description": "快速梳理信息架构、关键路径与迭代优先级。"
+                },
+                {
+                    "subtitle": "CONTENT",
+                    "title": "联合创作",
+                    "description": "共建课程、白皮书或品牌故事，兼顾气质与细节。"
+                },
+                {
+                    "subtitle": "TOOLS",
+                    "title": "MyWork",
+                    "description": "如果你对创作工具有想法，这里会是优先回应的入口。"
+                }
+            ]
+        }
+    }
+}
