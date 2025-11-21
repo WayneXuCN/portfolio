@@ -3,6 +3,7 @@ import Link from 'next/link';
 import Hero from '../ui/Hero.jsx';
 import WebsiteItem from '../ui/WebsiteItem.jsx';
 import FeaturedPostItem from '../ui/FeaturedPostItem.jsx';
+import { resolveContentHref } from '../../lib/urlUtils.js';
 
 const Home = ({ content }) => {
   const { hero, websites, featuredPosts } = content;
@@ -33,7 +34,7 @@ const Home = ({ content }) => {
         </div>
         <div className='flex justify-end mt-8 sm:mt-10'>
           <Link
-            href={featuredPosts.seeAllUrl}
+            href={resolveContentHref(featuredPosts.seeAllUrl)}
             className='text-pink-500 font-medium flex items-center hover:text-pink-600 transition-colors text-base sm:text-lg'
           >
             {featuredPosts.seeAllText} <i className='fas fa-arrow-right ml-2'></i>

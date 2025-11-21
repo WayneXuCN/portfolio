@@ -1,10 +1,11 @@
 import React from 'react';
 import Image from 'next/image';
 import PropTypes from 'prop-types';
+import { resolveContentHref } from '../../lib/urlUtils.js';
 
 const WebsiteItem = ({ item }) => (
   <a
-    href={item.url}
+    href={resolveContentHref(item.url)}
     target='_blank'
     rel='noopener noreferrer'
     aria-label={`访问 ${item.title}: ${item.description}`}

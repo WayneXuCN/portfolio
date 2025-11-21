@@ -7,7 +7,13 @@ import { useLanguage } from '../../lib/LanguageContext.jsx';
 
 const Layout = ({ children }) => {
   const { content } = useLanguage();
+
+  if (!content?.header || !content?.footer) {
+    return null;
+  }
+
   const { header, footer } = content;
+  const socialLinks = Array.isArray(footer.socialLinks) ? footer.socialLinks : [];
 
   return (
     <div className='max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12 lg:py-16 animate-fade-in'>
@@ -21,7 +27,7 @@ const Layout = ({ children }) => {
             {footer.copyright}
           </p>
           <div className='flex space-x-4 sm:space-x-6'>
-            {footer.socialLinks.map(link => (
+            {socialLinks.map(link => (
               <SocialLink key={link.url} link={link} />
             ))}
           </div>

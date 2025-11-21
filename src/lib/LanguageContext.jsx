@@ -1,9 +1,10 @@
 'use client';
 
-import React, { createContext, useState, useContext, useEffect, useMemo } from 'react';
+import React, { createContext, useState, useContext, useEffect, useMemo, useCallback } from 'react';
 import { locales, defaultLocale } from '../locales/config';
 
 const LanguageContext = createContext();
+const localeKeys = Object.keys(locales);
 
 // 安全的localStorage操作
 const getStoredLanguage = () => {
@@ -26,24 +27,58 @@ const setStoredLanguage = lang => {
 };
 
 export const LanguageProvider = ({ children }) => {
-  const [language, setLanguage] = useState(() => getStoredLanguage());
-  const content = useMemo(() => locales[language]?.data, [language]);
+  const [language, setLanguageState] = useState(defaultLocale);
+  const [isReady, setIsReady] = useState(false);
 
-  const toggleLanguage = () => {
-    const localeKeys = Object.keys(locales);
-    const currentIndex = localeKeys.indexOf(language);
+  const updateLanguage = useCallback((nextLanguage, { persist = true } = {}) => {
+    const fallbackLanguage = locales[nextLanguage] ? nextLanguage : defaultLocale;
+    setLanguageState(prev => (prev === fallbackLanguage ? prev : fallbackLanguage));
+    if (persist) {
+      setStoredLanguage(fallbackLanguage);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    updateLanguage(getStoredLanguage());
+    setIsReady(true);
+  }, [updateLanguage]);
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return undefined;
+    const handleStorage = event => {
+      if (event.key === 'language' && event.newValue) {
+        updateLanguage(event.newValue, { persist: false });
+      }
+    };
+    window.addEventListener('storage', handleStorage);
+    return () => window.removeEventListener('storage', handleStorage);
+  }, [updateLanguage]);
+
+  const resolvedLanguage = locales[language] ? language : defaultLocale;
+  const content = useMemo(() => {
+    return locales[resolvedLanguage]?.data ?? locales[defaultLocale]?.data ?? null;
+  }, [resolvedLanguage]);
+
+  const toggleLanguage = useCallback(() => {
+    const currentIndex = localeKeys.indexOf(resolvedLanguage);
     const nextIndex = (currentIndex + 1) % localeKeys.length;
-    const newLang = localeKeys[nextIndex];
+    updateLanguage(localeKeys[nextIndex]);
+  }, [resolvedLanguage, updateLanguage]);
 
-    setLanguage(newLang);
-    setStoredLanguage(newLang);
-  };
-
-  return (
-    <LanguageContext.Provider value={{ language, content, toggleLanguage }}>
-      {children}
-    </LanguageContext.Provider>
+  const contextValue = useMemo(
+    () => ({
+      language: resolvedLanguage,
+      content,
+      toggleLanguage,
+      setLanguage: updateLanguage,
+      availableLanguages: localeKeys,
+      isReady,
+    }),
+    [resolvedLanguage, content, toggleLanguage, updateLanguage, isReady]
   );
+
+  return <LanguageContext.Provider value={contextValue}>{children}</LanguageContext.Provider>;
 };
 
 export const useLanguage = () => {

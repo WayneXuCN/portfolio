@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import Hero from '../ui/Hero.jsx';
+import { resolveContentHref } from '../../lib/urlUtils.js';
 
 const About = ({ content }) => {
   const { about } = content;
@@ -61,7 +62,7 @@ const About = ({ content }) => {
             <h4 className='text-2xl font-semibold mb-3'>{values.product.title}</h4>
             <p className='text-gray-600 dark:text-gray-300'>{values.product.description}</p>
             <Link
-              href={values.product.linkUrl}
+              href={resolveContentHref(values.product.linkUrl)}
               className='inline-flex items-center text-pink-500 dark:text-pink-400 font-medium underline mt-4'
               suppressHydrationWarning
             >
@@ -79,7 +80,7 @@ const About = ({ content }) => {
           <h3 className='display-font text-4xl font-semibold mb-6'>{philosophy.title}</h3>
           <p className='text-lg text-gray-200 dark:text-gray-300 mb-8'>{philosophy.description}</p>
           <Link
-            href={philosophy.ctaUrl}
+            href={resolveContentHref(philosophy.ctaUrl)}
             className='inline-flex items-center text-black bg-white dark:text-white dark:bg-gray-700 px-5 py-3 rounded-full font-semibold'
           >
             {philosophy.ctaText} <i className='fas fa-arrow-right ml-3'></i>

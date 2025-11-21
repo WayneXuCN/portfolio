@@ -17,7 +17,7 @@
         {
             "label": "关于",
             "href": "about.html",
-            "hidden": true
+            "hidden": false
         },
         {
             "label": "联系",
@@ -203,7 +203,7 @@
                 "title": "关于“数字化”与“学术工具”的思考",
                 "description": "除了风险研究，我也关注科研效率工具的开发。我认为优秀的工具不应仅仅是功能的堆砌，而应是思维流的自然延伸，帮助研究者在信息过载中保持清醒。",
                 "linkText": "查看工具集",
-                "linkUrl": "index.html#websites"
+                "linkUrl": "index.html"
             }
         },
         "philosophy": {

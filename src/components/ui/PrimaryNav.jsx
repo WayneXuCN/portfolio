@@ -1,37 +1,38 @@
 'use client';
 
-import React from 'react';
+import React, { useMemo, useCallback } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useLanguage } from '../../lib/LanguageContext.jsx';
+import { normalizeContentPath, resolveContentHref, isExternalHref } from '../../lib/urlUtils.js';
 
 const PrimaryNav = () => {
   const { content } = useLanguage();
-  const navLinks = (content?.nav || []).filter(link => !link.hidden);
   const pathname = usePathname();
+  const currentPath = useMemo(() => normalizeContentPath(pathname), [pathname]);
 
-  // Helper to check if link is active
-  const isActiveLink = href => {
-    // Handle root path
-    if (href === 'index.html' || href === '/') {
-      return pathname === '/';
+  const navLinks = useMemo(() => {
+    if (!Array.isArray(content?.nav)) {
+      return [];
     }
-    // Handle other paths (remove .html for comparison if needed, or match exact)
-    // Our content.json has .html extensions, but Next.js uses clean URLs
-    const cleanHref = href.replace('.html', '');
-    const cleanPath = pathname.replace('/', '');
-    return cleanPath === cleanHref;
-  };
+    return content.nav.filter(link => link?.href && !link.hidden);
+  }, [content]);
 
-  // Helper to get correct Next.js href
-  const getHref = href => {
-    if (href === 'index.html') return '/';
-    return '/' + href.replace('.html', '');
-  };
+  const isActiveLink = useCallback(
+    href => {
+      const normalizedHref = normalizeContentPath(href);
+      if (isExternalHref(normalizedHref) || normalizedHref.startsWith('#')) {
+        return false;
+      }
+      return normalizedHref === currentPath;
+    },
+    [currentPath]
+  );
 
   return (
     <nav className='flex flex-wrap items-center gap-3 sm:gap-8 text-base font-medium text-gray-600 dark:text-gray-300'>
       {navLinks.map((link, index) => {
+        const resolvedHref = resolveContentHref(link.href);
         const active = isActiveLink(link.href);
         return (
           <React.Fragment key={link.href}>
@@ -41,7 +42,8 @@ const PrimaryNav = () => {
               </span>
             )}
             <Link
-              href={getHref(link.href)}
+              href={resolvedHref}
+              aria-current={active ? 'page' : undefined}
               className={`relative group transition-colors py-1 ${
                 active
                   ? 'text-black dark:text-white font-bold'

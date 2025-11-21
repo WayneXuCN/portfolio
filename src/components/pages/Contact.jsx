@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useCallback, useMemo, useEffect } from 'react';
 import emailjs from '@emailjs/browser';
 import Hero from '../ui/Hero.jsx';
 
@@ -16,43 +16,111 @@ const Contact = ({ content }) => {
     formSubmit,
   } = contact;
   const form = useRef();
+  const statusResetRef = useRef(null);
   const [status, setStatus] = useState('idle'); // idle, sending, success, error
-  const [copied, setCopied] = useState(false);
+  const [copyStatus, setCopyStatus] = useState('idle'); // idle, success, error
+  const emailAddress = cards.email.address;
 
-  const handleCopyEmail = e => {
+  const scheduleStatusReset = useCallback(() => {
+    if (statusResetRef.current) {
+      clearTimeout(statusResetRef.current);
+    }
+    statusResetRef.current = setTimeout(() => {
+      setStatus('idle');
+      statusResetRef.current = null;
+    }, 5000);
+  }, []);
+
+  useEffect(() => {
+    return () => {
+      if (statusResetRef.current) {
+        clearTimeout(statusResetRef.current);
+      }
+    };
+  }, []);
+
+  const copyToClipboard = useCallback(async text => {
+    if (typeof window === 'undefined') return false;
+    try {
+      if (navigator?.clipboard?.writeText) {
+        await navigator.clipboard.writeText(text);
+        return true;
+      }
+      const textarea = document.createElement('textarea');
+      textarea.value = text;
+      textarea.setAttribute('readonly', '');
+      textarea.style.position = 'absolute';
+      textarea.style.left = '-9999px';
+      document.body.appendChild(textarea);
+      textarea.select();
+      const successful = document.execCommand('copy');
+      document.body.removeChild(textarea);
+      return successful;
+    } catch (error) {
+      console.error('Clipboard copy failed:', error);
+      return false;
+    }
+  }, []);
+
+  const handleCopyEmail = useCallback(
+    async e => {
+      e.preventDefault();
+      const success = await copyToClipboard(emailAddress);
+      setCopyStatus(success ? 'success' : 'error');
+      setTimeout(() => setCopyStatus('idle'), 2000);
+    },
+    [copyToClipboard, emailAddress]
+  );
+
+  const sendEmail = async e => {
     e.preventDefault();
-    navigator.clipboard.writeText(cards.email.address);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
-  };
+    if (status === 'sending') return;
 
-  const sendEmail = e => {
-    e.preventDefault();
-    setStatus('sending');
-
-    // 使用环境变量获取配置
-    // 请确保在 .env 文件中配置了这些变量
     const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
     const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
     const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
 
-    emailjs
-      .sendForm(serviceId, templateId, form.current, {
-        publicKey: publicKey,
-      })
-      .then(
-        () => {
-          setStatus('success');
-          form.current.reset();
-          setTimeout(() => setStatus('idle'), 5000);
-        },
-        error => {
-          console.error('FAILED...', error.text);
-          setStatus('error');
-          setTimeout(() => setStatus('idle'), 5000);
-        }
-      );
+    if (!serviceId || !templateId || !publicKey) {
+      console.error('EmailJS environment variables are missing.');
+      setStatus('error');
+      scheduleStatusReset();
+      return;
+    }
+
+    if (!form.current) {
+      setStatus('error');
+      scheduleStatusReset();
+      return;
+    }
+
+    setStatus('sending');
+
+    try {
+      await emailjs.sendForm(serviceId, templateId, form.current, {
+        publicKey,
+      });
+      setStatus('success');
+      form.current.reset();
+    } catch (error) {
+      console.error('FAILED...', error?.text || error);
+      setStatus('error');
+    } finally {
+      scheduleStatusReset();
+    }
   };
+
+  const statusText = useMemo(() => {
+    switch (status) {
+      case 'sending':
+        return formSubmit?.sending || '发送中...';
+      case 'success':
+        return formSubmit?.success || '发送成功！我会尽快回复';
+      case 'error':
+        return formSubmit?.error || '发送失败，请稍后重试';
+      default:
+        return formSubmit?.default || '发送给 Wenjie';
+    }
+  }, [status, formSubmit]);
 
   return (
     <>
@@ -99,10 +167,15 @@ const Contact = ({ content }) => {
               onClick={handleCopyEmail}
               className='flex-1 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 text-center py-3 rounded-xl text-sm font-medium hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors border border-gray-200 dark:border-gray-700 hover:border-gray-300 dark:hover:border-gray-600'
             >
-              {copied ? (
+              {copyStatus === 'success' ? (
                 <span className='text-green-600 dark:text-green-400'>
                   <i className='fas fa-check mr-2'></i>
                   {actions?.copied || '已复制'}
+                </span>
+              ) : copyStatus === 'error' ? (
+                <span className='text-red-600 dark:text-red-400'>
+                  <i className='fas fa-exclamation-triangle mr-2'></i>
+                  {actions?.copyError || '复制失败'}
                 </span>
               ) : (
                 <span>
@@ -243,14 +316,11 @@ const Contact = ({ content }) => {
                   : 'bg-black dark:bg-gray-700 text-white card-hover'
             } disabled:opacity-70 disabled:cursor-not-allowed`}
           >
-            {status === 'sending'
-              ? formSubmit?.sending || '发送中...'
-              : status === 'success'
-                ? formSubmit?.success || '发送成功！我会尽快回复'
-                : status === 'error'
-                  ? formSubmit?.error || '发送失败，请稍后重试'
-                  : formSubmit?.default || '发送给 Wenjie'}
+            {statusText}
           </button>
+          <span className='sr-only' role='status' aria-live='polite'>
+            {statusText}
+          </span>
         </form>
       </section>
 
