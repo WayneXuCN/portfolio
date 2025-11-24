@@ -46,11 +46,35 @@
                 "description": "My self-hosted work dashboard that aggregates information and common tools"
             },
             {
+                "id": "gitea",
+                "title": "Code Hosting",
+                "subtitle": "Gitea Service",
+                "image": "https://picsum.photos/seed/gitea/600/350.jpg",
+                "url": "https://gitea.wenjiexu.site",
+                "description": "My private code hosting platform for managing personal projects and version control"
+            },
+            {
+                "id": "overleaf",
+                "title": "Paper Writing",
+                "subtitle": "Overleaf Service",
+                "image": "https://picsum.photos/seed/overleaf/600/350.jpg",
+                "url": "https://overleaf.wenjiexu.site",
+                "description": "Self-hosted online LaTeX editor for academic paper writing and typesetting"
+            },
+            {
+                "id": "blinko",
+                "title": "Flash Notes",
+                "subtitle": "Blinko Service",
+                "image": "https://picsum.photos/seed/blinko/600/350.jpg",
+                "url": "https://blinko.wenjiexu.site",
+                "description": "Lightweight personal note-taking tool for capturing ideas and thoughts instantly"
+            },
+            {
                 "id": "blog",
                 "title": "Personal Blog",
                 "subtitle": "Sharing Personal Articles",
                 "image": "https://picsum.photos/seed/blog/600/350.jpg",
-                "url": "https://lab.wenjiexu.site/blog",
+                "url": "https://blog.wenjiexu.site",
                 "description": "Sharing personal articles, including tech insights, research experiences and life reflections"
             },
             {

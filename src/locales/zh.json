@@ -46,11 +46,35 @@
                 "description": "我的自托管工作仪表板，聚合关注信息和常用工具"
             },
             {
+                "id": "gitea",
+                "title": "代码托管",
+                "subtitle": "Gitea 服务",
+                "image": "https://picsum.photos/seed/gitea/600/350.jpg",
+                "url": "https://gitea.wenjiexu.site",
+                "description": "我的私有代码托管平台，用于管理个人项目与代码版本控制"
+            },
+            {
+                "id": "overleaf",
+                "title": "论文写作",
+                "subtitle": "Overleaf 服务",
+                "image": "https://picsum.photos/seed/overleaf/600/350.jpg",
+                "url": "https://overleaf.wenjiexu.site",
+                "description": "自托管的 LaTeX 在线编辑器，专注于学术论文撰写与排版"
+            },
+            {
+                "id": "blinko",
+                "title": "闪念笔记",
+                "subtitle": "Blinko 服务",
+                "image": "https://picsum.photos/seed/blinko/600/350.jpg",
+                "url": "https://blinko.wenjiexu.site",
+                "description": "轻量级个人笔记工具，随时捕捉灵感与想法"
+            },
+            {
                 "id": "blog",
                 "title": "个人博客",
                 "subtitle": "分享个人文章",
                 "image": "https://picsum.photos/seed/blog/600/350.jpg",
-                "url": "https://lab.wenjiexu.site/blog",
+                "url": "https://blog.wenjiexu.site",
                 "description": "分享个人文章，包括技术分享、研究心得和生活感悟"
             },
             {

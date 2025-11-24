@@ -43,6 +43,7 @@ const PrimaryNav = () => {
             )}
             <Link
               href={resolvedHref}
+              prefetch={false}
               aria-current={active ? 'page' : undefined}
               className={`relative group transition-colors py-1 ${
                 active

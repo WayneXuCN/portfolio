@@ -8,7 +8,9 @@ const trimSlashes = value => value.replace(/^\/+/g, '').replace(/\/+$/g, '');
 
 const normalizeSegment = value => {
   if (!value) return '';
-  const withoutExt = stripHtmlExtension(value).trim();
+  // 先去除首尾空格，再处理扩展名
+  const trimmedValue = value.trim();
+  const withoutExt = stripHtmlExtension(trimmedValue);
   const trimmed = trimSlashes(withoutExt);
   if (trimmed === '' || trimmed.toLowerCase() === 'index') {
     return '';
