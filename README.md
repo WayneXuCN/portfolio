@@ -87,7 +87,7 @@ Output is generated in the `dist/` directory, ready for deployment to any static
 
 ## 📁 Project Structure
 
-```
+```text
 starter-theme/
 ├── src/
 │   ├── components/astro/     # React island components
@@ -95,6 +95,7 @@ starter-theme/
 │   │   ├── Hero.jsx          # Hero section
 │   │   ├── Footer.jsx        # Site footer
 │   │   ├── ThemeToggle.jsx   # Dark mode toggle
+│   │   ├── LanguageSwitcher.jsx # Language switcher
 │   │   └── ...
 │   ├── content/
 │   │   └── i18n/             # Translations (Content Collections)
@@ -109,6 +110,8 @@ starter-theme/
 │   │   ├── 404.astro         # Error page
 │   │   ├── en/               # English routes
 │   │   └── zh/               # Chinese routes
+│   ├── middleware.ts         # Middleware routing redirects
+│   ├── env.d.ts              # TypeScript type declarations
 │   └── content.config.ts     # Content Collections schema
 ├── public/                   # Static assets
 ├── scripts/
@@ -266,6 +269,7 @@ bun run build
 ### Cloudflare Pages
 
 Connect your repository and set:
+
 - **Build command**: `bun run build`
 - **Output directory**: `dist`
 
@@ -298,13 +302,6 @@ bun run test:ui
 <p align="center">
   <img src="public/assets/img/desktop_pagespeed.png" alt="Lighthouse Desktop Score" width="600" />
 </p>
-
-| Metric | Score |
-|--------|-------|
-| Performance | 100 |
-| Accessibility | 100 |
-| Best Practices | 100 |
-| SEO | 100 |
 
 ## 🛠️ Tech Stack
 

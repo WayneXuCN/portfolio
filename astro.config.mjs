@@ -14,6 +14,7 @@ export default defineConfig({
   site: 'https://wenjiexu.site', // 在部署时更新为实际域名
   
   // i18n 国际化配置
+  // 参考文档：Internationalization (i18n) Routing
   i18n: {
     // 默认语言
     defaultLocale: 'zh',
@@ -24,6 +25,17 @@ export default defineConfig({
       // 默认语言也添加前缀，如 /zh/, /en/
       prefixDefaultLocale: true,
     },
+  },
+  
+  // Prefetch 预获取配置
+  // 参考文档：Prefetch Guide
+  // 启用后会自动为带有 data-astro-prefetch 属性的链接添加预获取
+  prefetch: {
+    // 默认策略：hover - 鼠标悬停时预获取
+    // 可选值：'hover' | 'tap' | 'viewport' | 'load'
+    defaultStrategy: 'hover',
+    // 不自动预获取所有链接，需要手动添加 data-astro-prefetch 属性
+    prefetchAll: false,
   },
   
   // 集成配置

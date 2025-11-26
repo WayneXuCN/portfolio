@@ -1,6 +1,14 @@
 /**
  * PrimaryNav.jsx (Astro React Island 版本)
  * 主导航组件，支持 active 状态高亮
+ * 
+ * 更新：
+ * - 添加 data-astro-prefetch 属性支持官方预获取
+ * - 优化路径标准化逻辑
+ * 
+ * 参考文档：
+ * - Prefetch Guide
+ * - View Transitions Guide
  */
 import React, { useMemo } from 'react';
 
@@ -13,7 +21,7 @@ const normalizePath = href => {
   if (href.startsWith('http') || href.startsWith('mailto:') || href.startsWith('#')) {
     return href;
   }
-  // 移除 .html 扩展名
+  // 移除 .html 扩展名（兼容旧配置）
   let normalized = href.replace(/\.html$/i, '');
   // 处理 index
   if (normalized === 'index' || normalized === '/index') {
@@ -58,7 +66,11 @@ const PrimaryNav = ({ nav = [], currentPath = '/', lang = 'en' }) => {
     );
   };
 
-  // 解析链接 href（添加语言前缀）
+  /**
+   * 解析链接 href（添加语言前缀）
+   * 注意：由于这是 React 客户端组件，无法直接使用 astro:i18n
+   * 因此保持手动拼接方式，但遵循 Astro i18n 的 URL 规范
+   */
   const resolveHref = href => {
     const normalized = normalizePath(href);
 
@@ -76,7 +88,7 @@ const PrimaryNav = ({ nav = [], currentPath = '/', lang = 'en' }) => {
       return `/${lang}/`;
     }
 
-    // 添加语言前缀
+    // 添加语言前缀，确保尾部斜杠
     return `/${lang}${normalized}/`;
   };
 
@@ -85,6 +97,7 @@ const PrimaryNav = ({ nav = [], currentPath = '/', lang = 'en' }) => {
       {navLinks.map((link, index) => {
         const resolvedHref = resolveHref(link.href);
         const active = isActiveLink(link.href);
+        const isExternal = resolvedHref.startsWith('http');
 
         return (
           <React.Fragment key={link.href}>
@@ -96,6 +109,9 @@ const PrimaryNav = ({ nav = [], currentPath = '/', lang = 'en' }) => {
             <a
               href={resolvedHref}
               aria-current={active ? 'page' : undefined}
+              // 为内部链接添加 prefetch 支持（官方推荐）
+              // 使用 hover 策略：鼠标悬停时预获取
+              data-astro-prefetch={!isExternal ? 'hover' : undefined}
               className={`relative group transition-colors py-1 ${
                 active
                   ? 'text-black dark:text-white font-bold'

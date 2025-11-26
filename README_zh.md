@@ -87,7 +87,7 @@ bun run build
 
 ## 📁 项目结构
 
-```
+```text
 starter-theme/
 ├── src/
 │   ├── components/astro/     # React 群岛组件
@@ -95,6 +95,7 @@ starter-theme/
 │   │   ├── Hero.jsx          # Hero 区块
 │   │   ├── Footer.jsx        # 页脚
 │   │   ├── ThemeToggle.jsx   # 主题切换
+│   │   ├── LanguageSwitcher.jsx # 语言切换
 │   │   └── ...
 │   ├── content/
 │   │   └── i18n/             # 翻译文件（内容集合）
@@ -109,6 +110,8 @@ starter-theme/
 │   │   ├── 404.astro         # 错误页面
 │   │   ├── en/               # 英文路由
 │   │   └── zh/               # 中文路由
+│   ├── middleware.ts         # Middleware 路由重定向 
+│   ├── env.d.ts              # TypeScript 类型声明
 │   └── content.config.ts     # 内容集合 Schema
 ├── public/                   # 静态资源
 ├── scripts/
@@ -237,6 +240,7 @@ export default defineConfig({
 | `Footer.jsx` | 页脚 |
 | `ThemeToggle.jsx` | 深色/浅色模式切换 |
 | `LanguageSwitcher.jsx` | 语言选择器 |
+| `PrimaryNav.jsx` | 主导航 |
 
 ## 🚢 部署
 
@@ -266,6 +270,7 @@ bun run build
 ### Cloudflare Pages
 
 连接仓库并设置：
+
 - **构建命令**：`bun run build`
 - **输出目录**：`dist`
 
@@ -298,13 +303,6 @@ bun run test:ui
 <p align="center">
   <img src="public/assets/img/desktop_pagespeed.png" alt="Lighthouse 桌面端评分" width="600" />
 </p>
-
-| 指标 | 分数 |
-|------|------|
-| 性能 | 100 |
-| 无障碍 | 100 |
-| 最佳实践 | 100 |
-| SEO | 100 |
 
 ## 🛠️ 技术栈
 

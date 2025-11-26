@@ -2,8 +2,13 @@
 /**
  * BaseLayout.astro
  * 全局布局组件，包含 meta、manifest、GA 条件脚本、主题初始化
+ * 
+ * 更新：
+ * - 添加 View Transitions 支持（参考：View Transitions Guide）
+ * - 添加 transition:animate 指令用于页面切换动画
  */
 import '../styles/global.css';
+import { ClientRouter } from 'astro:transitions';
 
 interface Props {
   title?: string;
@@ -72,8 +77,20 @@ const gaId = import.meta.env.PUBLIC_GA_ID;
     <link rel="stylesheet" href="/assets/css/custom-icons.css" />
     
     <!-- 
+      View Transitions - Astro 官方客户端路由
+      参考文档：View Transitions Guide
+      启用后页面切换将有平滑的过渡动画
+      同时自动启用 prefetch（当 prefetchAll: true 时）
+    -->
+    <ClientRouter />
+    
+    <!-- 
       主题初始化脚本 - 必须在 body 渲染前执行
       避免 FOUC (Flash of Unstyled Content)
+      
+      更新：添加 astro:after-swap 事件监听，
+      确保 View Transitions 页面切换后主题状态正确
+      参考文档：View Transitions - Script behavior
     -->
     <script is:inline>
       (function() {
@@ -85,8 +102,13 @@ const gaId = import.meta.env.PUBLIC_GA_ID;
           return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
         }
         
-        const theme = getTheme();
-        document.documentElement.classList.toggle('dark', theme === 'dark');
+        function applyTheme() {
+          const theme = getTheme();
+          document.documentElement.classList.toggle('dark', theme === 'dark');
+        }
+        
+        // 初始化主题
+        applyTheme();
         
         // 监听系统主题变化（当没有手动设置时）
         window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
@@ -94,6 +116,10 @@ const gaId = import.meta.env.PUBLIC_GA_ID;
             document.documentElement.classList.toggle('dark', e.matches);
           }
         });
+        
+        // View Transitions：页面切换后重新应用主题
+        // astro:after-swap 事件在 DOM 交换完成后触发
+        document.addEventListener('astro:after-swap', applyTheme);
       })();
     </script>
     
@@ -112,7 +138,14 @@ const gaId = import.meta.env.PUBLIC_GA_ID;
   </head>
   
   <body class="min-h-screen bg-white text-gray-900 dark:bg-gray-900 dark:text-gray-100 transition-colors duration-300">
-    <main class="container mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 py-12 sm:py-16 max-w-8xl">
+    <!-- 
+      主内容区域使用 fade 过渡动画
+      transition:animate="fade" 是 Astro 内置动画
+    -->
+    <main 
+      class="container mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 py-12 sm:py-16 max-w-8xl"
+      transition:animate="fade"
+    >
       <slot />
     </main>
   </body>
