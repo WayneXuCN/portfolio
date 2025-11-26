@@ -6,14 +6,14 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import HeaderBar from '../../components/astro/HeaderBar.jsx';
 import Home from '../../components/astro/Home.jsx';
 import UnderlineEffects from '../../components/astro/UnderlineEffects.jsx';
-import { getLocaleDataSync } from '../../locales/config.js';
+import { getI18n, type Locale } from '../../lib/i18n';
 import rssData from '../../data/rss-posts.json';
 
 // 当前语言
-const lang = 'en';
+const lang: Locale = 'en';
 
-// 从统一配置获取 locale 数据
-const translations = getLocaleDataSync(lang);
+// 从内容集合获取翻译数据
+const translations = await getI18n(lang);
 const { site, nav, header } = translations;
 
 // 当前路径用于导航高亮
@@ -31,22 +31,11 @@ const rssPosts = rssData[lang] || [];
   lang={lang}
 >
   <!-- HeaderBar 作为 React island，立即加载 -->
-  <HeaderBar 
-    client:load 
-    header={header} 
-    nav={nav} 
-    currentPath={currentPath}
-    lang={lang}
-  />
-  
+  <HeaderBar client:load header={header} nav={nav} currentPath={currentPath} lang={lang} />
+
   <!-- Home 组件包含 Hero、Websites、Featured Posts 和 Footer -->
-  <Home 
-    client:load
-    translations={translations}
-    language={lang}
-    rssPosts={rssPosts}
-  />
-  
+  <Home client:load translations={translations} language={lang} rssPosts={rssPosts} />
+
   <!-- 下划线悬停效果 -->
   <UnderlineEffects client:load />
 </BaseLayout>

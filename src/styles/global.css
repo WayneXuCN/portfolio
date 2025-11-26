@@ -5,8 +5,8 @@
 :root {
   /* 全局字体与颜色变量 */
   --font-family-base:
-    "Noto Sans SC", "Noto Sans", -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans,
-    Helvetica Neue, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
+    "Noto Sans SC", "Noto Sans", -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell,
+    Fira Sans, Droid Sans, Helvetica Neue, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
   --font-family-display: "Noe Display", Georgia, Times, serif;
   --font-noto-sans: "Noto Sans SC", "Noto Sans", system-ui, sans-serif;
   --text-primary: #111;
@@ -14,9 +14,10 @@
   --accent-color: #10b981;
   --background-color: #fff;
   --border-color: #e5e7eb;
-  --font-sans: "Noto Sans SC", "Noto Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-sans:
+    "Noto Sans SC", "Noto Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-  
+
   /* 下划线效果颜色 */
   --underline-base-color: #e5e7eb;
   --underline-hover-color: transparent;

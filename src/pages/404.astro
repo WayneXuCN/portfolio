@@ -5,11 +5,11 @@
  * 注意：404 页面不包含 Footer，保持简洁
  */
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { getLocaleDataSync, defaultLocale } from '../locales/config.js';
+import { getI18n, defaultLocale, type Locale } from '../lib/i18n';
 
 // 404 页面使用默认语言
-const lang = defaultLocale;
-const translations = getLocaleDataSync(lang);
+const lang: Locale = defaultLocale;
+const translations = await getI18n(lang);
 const { site } = translations;
 
 // 404 页面文本（可以添加到 locale JSON 中）
@@ -34,7 +34,8 @@ const content = {
     title: '404 - Page Not Found',
     description: 'Sorry, the page you are looking for does not exist',
     heading: 'Page seems lost',
-    message: 'The link may have been updated, but the good news is, inspiration remains. Try the following:',
+    message:
+      'The link may have been updated, but the good news is, inspiration remains. Try the following:',
     homeButton: 'Back to Home',
     contactButton: 'Contact Wenjie',
     projectsTitle: 'Recent Projects',
@@ -44,18 +45,14 @@ const content = {
     contactTitle: 'Collaboration',
     contactText: 'Want to chat? Click here to',
     contactLink: 'send an email',
-    contactEnd: ', I\'m always ready to help',
+    contactEnd: ", I'm always ready to help",
   },
 };
 
 const t = content[lang] || content.zh;
 ---
 
-<BaseLayout 
-  title={t.title}
-  description={t.description}
-  lang={lang}
->
+<BaseLayout title={t.title} description={t.description} lang={lang}>
   <div class='min-h-[70vh] flex items-center justify-center py-20'>
     <div class='max-w-3xl mx-auto px-6 text-center'>
       <p class='text-xs uppercase tracking-[0.6em] text-red-500 font-semibold mb-6'>404</p>
@@ -78,7 +75,9 @@ const t = content[lang] || content.zh;
         </a>
       </div>
       <div class='grid sm:grid-cols-2 gap-6 text-left'>
-        <article class='p-6 border border-gray-200 dark:border-gray-700 rounded-3xl card-hover bg-white dark:bg-gray-800'>
+        <article
+          class='p-6 border border-gray-200 dark:border-gray-700 rounded-3xl card-hover bg-white dark:bg-gray-800'
+        >
           <h3 class='text-xl font-semibold mb-2 text-gray-900 dark:text-gray-100'>
             {t.projectsTitle}
           </h3>
@@ -93,7 +92,9 @@ const t = content[lang] || content.zh;
             {t.projectsEnd}
           </p>
         </article>
-        <article class='p-6 border border-gray-200 dark:border-gray-700 rounded-3xl card-hover bg-white dark:bg-gray-800'>
+        <article
+          class='p-6 border border-gray-200 dark:border-gray-700 rounded-3xl card-hover bg-white dark:bg-gray-800'
+        >
           <h3 class='text-xl font-semibold mb-2 text-gray-900 dark:text-gray-100'>
             {t.contactTitle}
           </h3>

@@ -11,7 +11,20 @@ export default defineConfig({
   trailingSlash: 'always',
   
   // 站点基础配置
-  site: 'https://example.com', // TODO: 在部署时更新为实际域名
+  site: 'https://wenjiexu.site', // 在部署时更新为实际域名
+  
+  // i18n 国际化配置
+  i18n: {
+    // 默认语言
+    defaultLocale: 'zh',
+    // 支持的语言列表
+    locales: ['zh', 'en'],
+    // 路由配置
+    routing: {
+      // 默认语言也添加前缀，如 /zh/, /en/
+      prefixDefaultLocale: true,
+    },
+  },
   
   // 集成配置
   integrations: [

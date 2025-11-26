@@ -113,21 +113,24 @@
                 "title": "Markdown Syntax Guide",
                 "image": "https://picsum.photos/seed/markdown789/600/350.jpg",
                 "url": "#",
-                "description": "Complete Markdown syntax reference guide"
+                "description": "Complete Markdown syntax reference guide",
+                "pubDate": "2024-01-20T00:00:00.000Z"
             },
             {
                 "id": "math-typesetting",
                 "title": "Math Typesetting - use Mathematical notation in blog posts",
                 "image": "https://picsum.photos/seed/math101/600/350.jpg",
                 "url": "#",
-                "description": "Using mathematical formulas and symbols in blog posts"
+                "description": "Using mathematical formulas and symbols in blog posts",
+                "pubDate": "2024-01-15T00:00:00.000Z"
             },
             {
                 "id": "rich-content",
                 "title": "Rich Content",
                 "image": "https://picsum.photos/seed/richcontent202/600/350.jpg",
                 "url": "#",
-                "description": "Creating rich and diverse blog content"
+                "description": "Creating rich and diverse blog content",
+                "pubDate": "2024-01-10T00:00:00.000Z"
             }
         ],
         "seeAllText": "See All Posts",

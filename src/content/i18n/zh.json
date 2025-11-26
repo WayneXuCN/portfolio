@@ -113,14 +113,16 @@
                 "title": "Math Typesetting - use Mathematical notation in blog posts",
                 "image": "https://picsum.photos/seed/math101/600/350.jpg",
                 "url": "#",
-                "description": "在博客中使用数学公式和符号"
+                "description": "在博客中使用数学公式和符号",
+                "pubDate": "2024-01-15T00:00:00.000Z"
             },
             {
                 "id": "rich-content",
                 "title": "Rich Content",
                 "image": "https://picsum.photos/seed/richcontent202/600/350.jpg",
                 "url": "#",
-                "description": "创建丰富多样的博客内容"
+                "description": "创建丰富多样的博客内容",
+                "pubDate": "2024-01-10T00:00:00.000Z"
             }
         ],
         "seeAllText": "See All Posts",

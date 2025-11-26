@@ -1,11 +1,13 @@
 {
-    "name": "SimpleLandingPage",
+    "name": "starter-theme",
     "version": "2.0.0",
-    "description": "Minimalist personal landing page and digital business card built with Astro, React and Tailwind CSS",
+    "description": "A modern, minimalist personal landing page theme built with Astro 5, React 19 and Tailwind CSS",
     "type": "module",
     "scripts": {
         "dev": "astro dev",
+        "dev:node": "NODE_OPTIONS='' astro dev",
         "build": "astro build",
+        "build:node": "NODE_OPTIONS='' astro build",
         "preview": "astro preview",
         "astro": "astro",
         "fetch:rss": "bun run scripts/fetch-rss.bun.js",
@@ -15,25 +17,34 @@
         "test:headed": "playwright test --headed",
         "test:ui": "playwright test --ui",
         "format": "prettier --write '**/*.{js,jsx,ts,tsx,json,css,html,astro}'",
-        "format:check": "prettier --check '**/*.{js,jsx,ts,tsx,json,css,html,astro}'"
+        "format:check": "prettier --check '**/*.{js,jsx,ts,tsx,json,css,html,astro}'",
+        "type-check": "tsc --noEmit",
+        "lint": "astro check",
+        "clean": "rm -rf dist node_modules .astro",
+        "reinstall": "bun run clean && bun install"
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/WayneXuCN/homepage.git"
+        "url": "git+https://github.com/WayneXuCN/starter-theme.git"
     },
     "keywords": [
         "astro",
+        "astro-theme",
         "landing-page",
         "personal-website",
+        "portfolio",
         "tailwindcss",
-        "react"
+        "react",
+        "i18n",
+        "dark-mode",
+        "static-site"
     ],
-    "author": "Wenjie Xu",
-    "license": "ISC",
+    "author": "Wenjie Xu <wenjie.xu.cn@outlook.com>",
+    "license": "MIT",
     "bugs": {
-        "url": "https://github.com/WayneXuCN/homepage/issues"
+        "url": "https://github.com/WayneXuCN/starter-theme/issues"
     },
-    "homepage": "https://github.com/WayneXuCN/homepage#readme",
+    "homepage": "https://github.com/WayneXuCN/starter-theme#readme",
     "devDependencies": {
         "@astrojs/react": "^4.4.2",
         "@astrojs/tailwind": "^6.0.2",

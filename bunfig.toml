@@ -1,0 +1,43 @@
+[install]
+# Save a text lockfile by default (for version control)
+# 是否安装可选依赖
+optional = true
+# 是否安装开发依赖
+dev = true
+# 是否安装对等依赖
+peer = true
+# 生产模式安装（等同于 --production 标志）
+production = false
+# 使用冻结锁文件模式（确保依赖版本一致性）
+frozenLockfile = false
+
+# 锁文件格式配置
+[lockfile]
+# 使用文本格式的锁文件（便于Git diff）
+saveTextLockfile = true
+
+# 运行时配置
+[run]
+# 运行脚本时的默认shell
+shell = "system"
+# 默认使用bun运行时
+bun = true
+
+# 测试配置
+[test]
+# 启用代码覆盖率
+coverage = true
+# 测试超时时间（毫秒）
+timeout = 10000
+
+# 性能优化配置
+[optimize]
+# 启用依赖预构建
+prebuild = true
+# 缓存配置
+cache = true
+
+# 日志配置
+[loglevel]
+# 日志级别：debug, info, warn, error
+level = "info"

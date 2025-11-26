@@ -12,7 +12,7 @@ const POST_STYLES = {
  * @param {string} href - 原始链接
  * @returns {string} - 处理后的链接
  */
-const resolveContentHref = (href) => {
+const resolveContentHref = href => {
   if (!href) return '#';
   // 外部链接直接返回
   if (href.startsWith('http://') || href.startsWith('https://')) {
@@ -27,7 +27,7 @@ const resolveContentHref = (href) => {
  * - 默认显示：标题 + 第一分类（category）
  * - 悬停时显示：简介(description) 和 发布时间(pubDate)
  * 保持现有 overlay 的视觉风格，仅调整内容布局与过渡效果
- * 
+ *
  * 使用标准 <img> 替代 next/image，设置 sizes/srcset 保持响应式
  */
 const FeaturedPostItem = ({ item, language = 'zh' }) => {
@@ -67,8 +67,8 @@ const FeaturedPostItem = ({ item, language = 'zh' }) => {
         <img
           src={item.image}
           alt={item.title}
-          loading="lazy"
-          decoding="async"
+          loading='lazy'
+          decoding='async'
           className='absolute inset-0 w-full h-full object-cover'
           sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw'
         />

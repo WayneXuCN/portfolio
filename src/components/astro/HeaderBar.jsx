@@ -9,7 +9,7 @@ import ThemeToggle from './ThemeToggle.jsx';
 
 const HeaderBar = ({ header, nav, currentPath = '/', lang = 'en' }) => {
   // 处理 OSS 图片 URL，添加图片处理参数
-  const getAvatarUrl = (url) => {
+  const getAvatarUrl = url => {
     if (!url) return '/assets/img/prof_pic.png';
     if (url.includes('aliyuncs.com') && !url.includes('x-oss-process')) {
       return `${url}?x-oss-process=image/resize,w_112`;
@@ -21,23 +21,23 @@ const HeaderBar = ({ header, nav, currentPath = '/', lang = 'en' }) => {
   const name = header?.name || '';
 
   return (
-    <header className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6 mb-12 sm:mb-16 md:mb-20 animate-fade-in">
-      <div className="flex items-center">
+    <header className='flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6 mb-12 sm:mb-16 md:mb-20 animate-fade-in'>
+      <div className='flex items-center'>
         <img
           src={avatarUrl}
           alt={name}
           width={56}
           height={56}
-          className="w-12 h-12 sm:w-14 sm:h-14 rounded-full mr-3 sm:mr-4 shadow-sm object-cover"
-          loading="eager"
+          className='w-12 h-12 sm:w-14 sm:h-14 rounded-full mr-3 sm:mr-4 shadow-sm object-cover'
+          loading='eager'
         />
-        <span className="font-medium text-gray-900 dark:text-white text-lg tracking-tight">
+        <span className='font-medium text-gray-900 dark:text-white text-lg tracking-tight'>
           {name}
         </span>
       </div>
-      <div className="flex flex-wrap justify-center items-center gap-y-4 gap-x-4 sm:gap-8">
+      <div className='flex flex-wrap justify-center items-center gap-y-4 gap-x-4 sm:gap-8'>
         <PrimaryNav nav={nav} currentPath={currentPath} lang={lang} />
-        <div className="flex items-center gap-2">
+        <div className='flex items-center gap-2'>
           <ThemeToggle />
           <LanguageSwitcher currentLang={lang} />
         </div>

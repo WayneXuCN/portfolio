@@ -5,21 +5,15 @@ import emailjs from '@emailjs/browser';
  * ContactForm (Astro 版本)
  * 联系表单组件，使用 EmailJS 发送邮件
  * 作为 React island 使用时需要 client:load 指令
- * 
+ *
  * 环境变量（Astro 使用 PUBLIC_ 前缀）：
  * - PUBLIC_EMAILJS_SERVICE_ID
  * - PUBLIC_EMAILJS_TEMPLATE_ID
  * - PUBLIC_EMAILJS_PUBLIC_KEY
  */
 const ContactForm = ({ content, emailAddress }) => {
-  const {
-    formLabels,
-    formPlaceholders,
-    formOptions,
-    formSubmit,
-    actions,
-  } = content;
-  
+  const { formLabels, formPlaceholders, formOptions, formSubmit, actions } = content;
+
   const form = useRef();
   const statusResetRef = useRef(null);
   const [status, setStatus] = useState('idle'); // idle, sending, success, error
@@ -43,7 +37,7 @@ const ContactForm = ({ content, emailAddress }) => {
     };
   }, []);
 
-  const copyToClipboard = useCallback(async (text) => {
+  const copyToClipboard = useCallback(async text => {
     if (typeof window === 'undefined') return false;
     try {
       if (navigator?.clipboard?.writeText) {
@@ -67,7 +61,7 @@ const ContactForm = ({ content, emailAddress }) => {
   }, []);
 
   const handleCopyEmail = useCallback(
-    async (e) => {
+    async e => {
       e.preventDefault();
       const success = await copyToClipboard(emailAddress);
       setCopyStatus(success ? 'success' : 'error');
@@ -76,7 +70,7 @@ const ContactForm = ({ content, emailAddress }) => {
     [copyToClipboard, emailAddress]
   );
 
-  const sendEmail = async (e) => {
+  const sendEmail = async e => {
     e.preventDefault();
     if (status === 'sending') return;
 

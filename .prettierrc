@@ -17,7 +17,14 @@
   "proseWrap": "preserve",
   "requirePragma": false,
   "vueIndentScriptAndStyle": false,
+  "plugins": ["prettier-plugin-astro"],
   "overrides": [
+    {
+      "files": "*.astro",
+      "options": {
+        "parser": "astro"
+      }
+    },
     {
       "files": "*.json",
       "options": {

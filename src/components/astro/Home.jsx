@@ -17,28 +17,29 @@ const Home = ({ translations, language = 'zh', rssPosts = [] }) => {
     const staticPosts = Array.isArray(featuredPosts?.items) ? featuredPosts.items : [];
     const rssItems = Array.isArray(rssPosts) ? rssPosts : [];
 
-    // RSS 帖子标记 isRSS
-    const markedRSS = rssItems.map((post) => ({ ...post, isRSS: true }));
+    // RSS 帖子标记 isRSS，静态帖子标记 isManual
+    const markedRSS = rssItems.map(post => ({ ...post, isRSS: true }));
+    const markedStatic = staticPosts.map(post => ({ ...post, isManual: true }));
 
-    // 合并并按日期排序（RSS 优先，因为通常更新）
-    const combined = [...markedRSS, ...staticPosts];
+    // 合并所有帖子
+    const combined = [...markedRSS, ...markedStatic];
 
-    // 按发布日期倒序
+    // 按发布日期倒序排序
     combined.sort((a, b) => {
       const dateA = new Date(a.pubDate || a.updated || 0);
       const dateB = new Date(b.pubDate || b.updated || 0);
       return dateB - dateA;
     });
 
-    // 限制数量
-    const limit = featuredPosts?.rss?.limit || 6;
-    return combined.slice(0, limit);
+    // 限制数量（RSS limit + 静态帖子数量，或单独使用 limit）
+    const rssLimit = featuredPosts?.rss?.limit || 6;
+    const totalLimit = rssLimit + staticPosts.length;
+    return combined.slice(0, Math.max(rssLimit, totalLimit));
   }, [featuredPosts, rssPosts]);
 
   // 判断是否显示 See All 链接（URL 不为空且不是 #）
-  const showSeeAll = featuredPosts?.seeAllUrl && 
-    featuredPosts.seeAllUrl !== '#' && 
-    featuredPosts?.seeAllText;
+  const showSeeAll =
+    featuredPosts?.seeAllUrl && featuredPosts.seeAllUrl !== '#' && featuredPosts?.seeAllText;
 
   return (
     <>

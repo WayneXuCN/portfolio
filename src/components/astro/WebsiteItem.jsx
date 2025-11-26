@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
  * @param {string} href - 原始链接
  * @returns {string} - 处理后的链接
  */
-const resolveContentHref = (href) => {
+const resolveContentHref = href => {
   if (!href) return '#';
   // 外部链接直接返回
   if (href.startsWith('http://') || href.startsWith('https://')) {
@@ -20,7 +20,7 @@ const resolveContentHref = (href) => {
  * WebsiteItem (Astro 版本)
  * 网站卡片组件，显示网站标题、描述和封面图
  * 悬停时显示描述信息
- * 
+ *
  * 使用标准 <img> 替代 next/image，设置 sizes 保持响应式
  */
 const WebsiteItem = ({ item, priority = false }) => (
@@ -37,8 +37,8 @@ const WebsiteItem = ({ item, priority = false }) => (
         src={item.image}
         alt={item.title}
         loading={priority ? 'eager' : 'lazy'}
-        decoding="async"
-        fetchpriority={priority ? 'high' : 'auto'}
+        decoding='async'
+        fetchPriority={priority ? 'high' : 'auto'}
         className='absolute inset-0 w-full h-full object-cover'
         sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw'
       />

@@ -7,7 +7,7 @@ import React, { useMemo } from 'react';
 /**
  * 标准化路径：移除 .html 扩展名和尾部斜杠
  */
-const normalizePath = (href) => {
+const normalizePath = href => {
   if (!href) return '/';
   // 处理外部链接和锚点
   if (href.startsWith('http') || href.startsWith('mailto:') || href.startsWith('#')) {
@@ -34,51 +34,62 @@ const PrimaryNav = ({ nav = [], currentPath = '/', lang = 'en' }) => {
   }, [nav]);
 
   // 判断是否为当前激活链接
-  const isActiveLink = (href) => {
+  const isActiveLink = href => {
     const normalizedHref = normalizePath(href);
     const normalizedCurrent = normalizePath(currentPath);
-    
+
     // 外部链接不激活
     if (normalizedHref.startsWith('http') || normalizedHref.startsWith('mailto:')) {
       return false;
     }
-    
+
     // 首页特殊处理
     if (normalizedHref === '/' || normalizedHref === '/index') {
-      return normalizedCurrent === '/' || normalizedCurrent === `/${lang}` || normalizedCurrent === `/${lang}/`;
+      return (
+        normalizedCurrent === '/' ||
+        normalizedCurrent === `/${lang}` ||
+        normalizedCurrent === `/${lang}/`
+      );
     }
-    
-    return normalizedCurrent.endsWith(normalizedHref) || normalizedCurrent === `/${lang}${normalizedHref}`;
+
+    return (
+      normalizedCurrent.endsWith(normalizedHref) ||
+      normalizedCurrent === `/${lang}${normalizedHref}`
+    );
   };
 
   // 解析链接 href（添加语言前缀）
-  const resolveHref = (href) => {
+  const resolveHref = href => {
     const normalized = normalizePath(href);
-    
+
     // 外部链接和锚点直接返回
-    if (normalized.startsWith('http') || normalized.startsWith('mailto:') || normalized.startsWith('#')) {
+    if (
+      normalized.startsWith('http') ||
+      normalized.startsWith('mailto:') ||
+      normalized.startsWith('#')
+    ) {
       return normalized;
     }
-    
+
     // 首页
     if (normalized === '/' || normalized === '/index') {
       return `/${lang}/`;
     }
-    
+
     // 添加语言前缀
     return `/${lang}${normalized}/`;
   };
 
   return (
-    <nav className="flex flex-wrap items-center gap-3 sm:gap-8 text-base font-medium text-gray-600 dark:text-gray-300">
+    <nav className='flex flex-wrap items-center gap-3 sm:gap-8 text-base font-medium text-gray-600 dark:text-gray-300'>
       {navLinks.map((link, index) => {
         const resolvedHref = resolveHref(link.href);
         const active = isActiveLink(link.href);
-        
+
         return (
           <React.Fragment key={link.href}>
             {index > 0 && (
-              <span className="text-gray-300 dark:text-gray-600 select-none text-sm sm:text-base">
+              <span className='text-gray-300 dark:text-gray-600 select-none text-sm sm:text-base'>
                 /
               </span>
             )}

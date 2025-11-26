@@ -1,0 +1,30 @@
+# Git属性配置 - 优化Bun锁文件的版本控制
+
+# Bun锁文件配置
+*.lockb binary diff=lockb
+bun.lock text diff=lockb
+
+# 常见文件类型处理
+*.astro text linguist-language=TypeScript
+*.jsx text linguist-language=JavaScript
+*.tsx text linguist-language=TypeScript
+*.mjs text linguist-language=JavaScript
+*.cjs text linguist-language=JavaScript
+
+# 图片文件
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.svg text
+*.ico binary
+*.webp binary
+
+# 字体文件
+*.woff binary
+*.woff2 binary
+*.ttf binary
+*.eot binary
+
+# 其他二进制文件
+*.pdf binary

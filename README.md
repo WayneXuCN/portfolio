@@ -1,186 +1,178 @@
-# Simple Landing Page
+<p align="center">
+  <img src="public/assets/img/website.png" alt="Starter Theme Preview" width="800" />
+</p>
 
-[English](README.md) | [中文](README_zh.md)
+<h1 align="center">Starter Theme</h1>
 
-A minimalist personal landing page and digital business card built with **Astro 5**, **React 19** and **Tailwind CSS**.
+<p align="center">
+  <strong>A modern, minimalist personal landing page theme built with Astro 5</strong>
+</p>
+
+<p align="center">
+  <a href="https://github.com/WayneXuCN/starter-theme/blob/main/LICENSE">
+    <img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="License" />
+  </a>
+  <a href="https://astro.build/">
+    <img src="https://img.shields.io/badge/Astro-5.x-ff5d01.svg?logo=astro" alt="Astro" />
+  </a>
+  <a href="https://react.dev/">
+    <img src="https://img.shields.io/badge/React-19.x-61dafb.svg?logo=react" alt="React" />
+  </a>
+  <a href="https://tailwindcss.com/">
+    <img src="https://img.shields.io/badge/Tailwind-3.x-38bdf8.svg?logo=tailwindcss" alt="Tailwind CSS" />
+  </a>
+  <a href="https://bun.sh/">
+    <img src="https://img.shields.io/badge/Bun-1.x-fbf0df.svg?logo=bun" alt="Bun" />
+  </a>
+</p>
+
+<p align="center">
+  <a href="#-features">Features</a> •
+  <a href="#-quick-start">Quick Start</a> •
+  <a href="#-configuration">Configuration</a> •
+  <a href="#-customization">Customization</a> •
+  <a href="#-deployment">Deployment</a>
+</p>
+
+<p align="center">
+  <a href="README.md">English</a> | <a href="README_zh.md">中文</a>
+</p>
+
+---
 
 ## ✨ Features
 
-- 🌍 **Internationalization**: Chinese/English language support with per-locale static pages
-- 🌙 **Dark Mode**: Theme switching with system preference detection and localStorage persistence
-- 📱 **Responsive Design**: Mobile-first design with Tailwind CSS
-- 📡 **RSS Aggregation**: Configurable RSS/Atom feed parser with Bun runtime support
-- 📧 **Contact Form**: Functional contact form using EmailJS
-- 📊 **Analytics**: Google Analytics integration (optional)
-- 🚀 **Performance Optimized**: Static site generation with Lighthouse-optimized scores
-- 🎨 **Modern UI**: Clean, professional design with smooth animations and transitions
-- ⚡ **React Islands**: Interactive components powered by Astro's islands architecture
+| Feature | Description |
+|---------|-------------|
+| 🌍 **i18n Ready** | Built-in internationalization with Astro's native i18n routing and Content Collections |
+| 🌙 **Dark Mode** | Automatic theme switching with system preference detection and localStorage persistence |
+| 📱 **Responsive** | Mobile-first design that looks great on all devices |
+| 📡 **RSS Aggregation** | Fetch and display posts from external RSS/Atom feeds |
+| 📧 **Contact Form** | Pre-configured EmailJS integration for functional contact forms |
+| 📊 **Analytics** | Optional Google Analytics 4 integration |
+| ⚡ **Performance** | 100/100 Lighthouse scores with static site generation |
+| 🎨 **Tailwind CSS** | Utility-first styling with full dark mode support |
+| 🏝️ **Islands Architecture** | Interactive React components with minimal JavaScript |
+| 🧪 **E2E Testing** | Playwright test suite included |
 
-## Preview
-
-![Website Preview](public/assets/img/website.png)
-
-## Lighthouse PageSpeed Insights
-
-### Desktop
-
-[![Google Lighthouse PageSpeed Insights](public/assets/img/desktop_pagespeed.png)](https://pagespeed.web.dev/analysis/https-www-wenjiexu-site/b7dpi427wf?form_factor=desktop)
-
-Run the test yourself: [Google Lighthouse PageSpeed Insights](https://pagespeed.web.dev/analysis/https-www-wenjiexu-site/b7dpi427wf?form_factor=desktop)
-
-### Mobile
-
-[![Google Lighthouse PageSpeed Insights](public/assets/img/mobile_pagespeed.png)](https://pagespeed.web.dev/analysis/https-www-wenjiexu-site/b7dpi427wf?form_factor=mobile)
-
-Run the test yourself: [Google Lighthouse PageSpeed Insights](https://pagespeed.web.dev/analysis/https-www-wenjiexu-site/b7dpi427wf?form_factor=mobile)
-
-## Project Structure
-
-```text
-src/
-├── components/
-│   └── astro/           # React island components
-│       ├── About.jsx    # About page component
-│       ├── Contact.jsx  # Contact page component
-│       ├── Footer.jsx   # Footer component
-│       ├── HeaderBar.jsx # Header with navigation
-│       ├── Home.jsx     # Home page component
-│       ├── Hero.jsx     # Hero section
-│       ├── ThemeToggle.jsx # Theme switcher
-│       ├── LanguageSwitcher.jsx # Language switcher
-│       └── ...          # Other UI components
-├── data/
-│   └── rss-posts.json   # Generated RSS feed data
-├── layouts/
-│   └── BaseLayout.astro # Global layout with meta, fonts, GA
-├── locales/             # Internationalization files
-│   ├── config.js        # Locale configuration
-│   ├── en.json          # English content
-│   └── zh.json          # Chinese content
-├── pages/
-│   ├── index.astro      # Root redirect to default locale
-│   ├── 404.astro        # Custom 404 page
-│   ├── en/              # English pages
-│   │   ├── index.astro
-│   │   ├── about.astro
-│   │   └── contact.astro
-│   └── zh/              # Chinese pages
-│       ├── index.astro
-│       ├── about.astro
-│       └── contact.astro
-├── styles/
-│   └── global.css       # Global styles
-└── scripts/
-    └── fetch-rss.bun.js # RSS aggregation script (Bun)
-```
-
-## Development
+## 🚀 Quick Start
 
 ### Prerequisites
 
-- [Bun](https://bun.sh/) 1.0+ (recommended)
-- Or Node.js 18+
+- [Bun](https://bun.sh/) 1.0+ (recommended) or [Node.js](https://nodejs.org/) 18+
 
-### Setup
+### Create Your Site
 
-1. **Clone and install dependencies**:
+```bash
+# Clone the template
+git clone https://github.com/WayneXuCN/starter-theme.git my-site
+cd my-site
 
-   ```bash
-   git clone https://github.com/WayneXuCN/homepage.git
-   cd homepage
-   bun install
-   ```
+# Install dependencies
+bun install
 
-2. **Configure environment variables**:
+# Start development server
+bun run dev
+```
 
-   Create a `.env` file based on `.env.example`:
+Open [http://localhost:4321](http://localhost:4321) to see your site.
 
-   ```bash
-   cp .env.example .env
-   ```
-
-   Edit `.env` with your configuration:
-
-   ```env
-   # EmailJS (required for contact form)
-   PUBLIC_EMAILJS_SERVICE_ID=your_service_id_here
-   PUBLIC_EMAILJS_TEMPLATE_ID=your_template_id_here
-   PUBLIC_EMAILJS_PUBLIC_KEY=your_public_key_here
-
-   # Google Analytics (optional)
-   PUBLIC_GA_ID=G-XXXXXXXXXX
-   ```
-
-3. **Run development server**:
-
-   ```bash
-   bun run dev
-   ```
-
-   Open [http://localhost:4321](http://localhost:4321) to view it in the browser.
-
-## Build & Deploy
-
-### Static Export
-
-The project is configured for static site generation:
+### Build for Production
 
 ```bash
 bun run build
 ```
 
-The static files will be generated in the `dist/` directory and can be deployed to any static hosting service (GitHub Pages, Vercel, Netlify, Cloudflare Pages, etc.).
+Output is generated in the `dist/` directory, ready for deployment to any static hosting platform.
 
-### Build Process
+## 📁 Project Structure
 
-The build includes an automatic RSS aggregation step:
+```
+starter-theme/
+├── src/
+│   ├── components/astro/     # React island components
+│   │   ├── HeaderBar.jsx     # Navigation header
+│   │   ├── Hero.jsx          # Hero section
+│   │   ├── Footer.jsx        # Site footer
+│   │   ├── ThemeToggle.jsx   # Dark mode toggle
+│   │   └── ...
+│   ├── content/
+│   │   └── i18n/             # Translations (Content Collections)
+│   │       ├── en.json
+│   │       └── zh.json
+│   ├── layouts/
+│   │   └── BaseLayout.astro  # Global HTML layout
+│   ├── lib/
+│   │   └── i18n.ts           # i18n utilities
+│   ├── pages/
+│   │   ├── index.astro       # Root redirect
+│   │   ├── 404.astro         # Error page
+│   │   ├── en/               # English routes
+│   │   └── zh/               # Chinese routes
+│   └── content.config.ts     # Content Collections schema
+├── public/                   # Static assets
+├── scripts/
+│   └── fetch-rss.bun.js      # RSS aggregation script
+├── astro.config.mjs          # Astro configuration
+├── tailwind.config.mjs       # Tailwind configuration
+└── package.json
+```
 
-1. **Pre-build**: `bun run prebuild` executes `bun run scripts/fetch-rss.bun.js`
-2. **RSS Fetching**: Fetches configured RSS/Atom feeds and generates `src/data/rss-posts.json`
-3. **Static Generation**: Astro builds the static site with RSS data included
+## ⚙️ Configuration
 
-## Configuration
+### Environment Variables
+
+Create a `.env` file in the project root:
+
+```env
+# EmailJS (required for contact form)
+PUBLIC_EMAILJS_SERVICE_ID=your_service_id
+PUBLIC_EMAILJS_TEMPLATE_ID=your_template_id
+PUBLIC_EMAILJS_PUBLIC_KEY=your_public_key
+
+# Google Analytics (optional)
+PUBLIC_GA_ID=G-XXXXXXXXXX
+```
+
+### Site Configuration
+
+Edit `astro.config.mjs` to update your site URL:
+
+```js
+export default defineConfig({
+  site: 'https://your-domain.com',
+  // ...
+});
+```
 
 ### Content Management
 
-All website content is managed through JSON files in `src/locales/`:
+All site content is managed through JSON files in `src/content/i18n/`:
 
-- `src/locales/zh.json` - Chinese content
-- `src/locales/en.json` - English content
+| File | Description |
+|------|-------------|
+| `zh.json` | Chinese content |
+| `en.json` | English content |
 
-Edit these files to update:
+Each file contains:
 
-- Text and labels
-- Navigation links
-- Project items
-- Social links
-- SEO metadata
+```json
+{
+  "site": { "title": "...", "description": "...", "author": "..." },
+  "nav": [{ "label": "Home", "href": "index.html" }],
+  "header": { "name": "...", "avatar": "..." },
+  "hero": { "title": "...", "subtitle": "...", "description": "..." },
+  "websites": { "title": "...", "items": [...] },
+  "featuredPosts": { "title": "...", "rss": {...}, "items": [...] },
+  "footer": { "copyright": "...", "socialLinks": [...] },
+  "about": { ... },
+  "contact": { ... }
+}
+```
 
-### Adding a New Language
+### RSS Feeds
 
-1. Add language config to `src/locales/config.js`:
-
-   ```js
-   export const localeConfig = {
-     // ... existing languages
-     ja: {
-       label: '日本語',
-       name: 'Japanese',
-       hrefLang: 'ja',
-     },
-   };
-   ```
-
-2. Create `src/locales/ja.json` with translated content
-
-3. Create pages in `src/pages/ja/` directory:
-   - `index.astro`
-   - `about.astro`
-   - `contact.astro`
-
-### RSS Configuration
-
-RSS feeds are configured in the locale files under `featuredPosts.rss`:
+Configure RSS aggregation in your locale JSON:
 
 ```json
 {
@@ -188,10 +180,7 @@ RSS feeds are configured in the locale files under `featuredPosts.rss`:
     "rss": {
       "enabled": true,
       "feeds": [
-        {
-          "url": "https://your-blog.com/feed.xml",
-          "parser": "jekyllFeed"
-        }
+        { "url": "https://blog.example.com/feed.xml", "parser": "default" }
       ],
       "limit": 6
     }
@@ -199,65 +188,149 @@ RSS feeds are configured in the locale files under `featuredPosts.rss`:
 }
 ```
 
-**Available parsers**:
+## 🎨 Customization
 
-- `default`: Standard RSS/Atom parser
-- `jekyllFeed`: Enhanced parser for Jekyll-generated feeds
+### Adding a New Language
 
-### EmailJS Setup
+1. **Update Astro config** (`astro.config.mjs`):
 
-For the contact form to work:
+   ```js
+   i18n: {
+     defaultLocale: 'zh',
+     locales: ['zh', 'en', 'ja'],
+     routing: { prefixDefaultLocale: true },
+   },
+   ```
 
-1. Create an [EmailJS](https://www.emailjs.com/) account
-2. Set up an email service
-3. Create an email template with variables: `user_name`, `user_email`, `topic`, `message`
-4. Update environment variables with your EmailJS credentials
+2. **Update i18n utilities** (`src/lib/i18n.ts`):
 
-### Theme Customization
+   ```ts
+   export const locales = ['zh', 'en', 'ja'] as const;
+   
+   export const localeConfig = {
+     // ...existing
+     ja: { label: '日', name: '日本語', hrefLang: 'ja' },
+   };
+   ```
 
-- **Colors**: Modify Tailwind configuration in `tailwind.config.mjs`
-- **Fonts**: Update font settings in `src/layouts/BaseLayout.astro`
-- **Dark Mode**: Automatically supported via `dark:` variants
+3. **Create translation file** (`src/content/i18n/ja.json`)
 
-## Available Scripts
+4. **Create page routes** (`src/pages/ja/`)
+
+### Styling
+
+- **Colors & Theme**: Edit `tailwind.config.mjs`
+- **Global Styles**: Edit `src/styles/global.css`
+- **Dark Mode**: Use Tailwind's `dark:` prefix
+
+### Components
+
+All interactive components are React islands in `src/components/astro/`:
+
+| Component | Purpose |
+|-----------|---------|
+| `HeaderBar.jsx` | Navigation with language switcher |
+| `Hero.jsx` | Hero section with title and CTA |
+| `Home.jsx` | Homepage layout with sections |
+| `About.jsx` | About page content |
+| `Contact.jsx` | Contact page with form |
+| `Footer.jsx` | Site footer |
+| `ThemeToggle.jsx` | Dark/light mode toggle |
+| `LanguageSwitcher.jsx` | Language selector |
+
+## 🚢 Deployment
+
+The theme generates static HTML files that can be deployed anywhere:
+
+### Vercel
 
 ```bash
-# Development
-bun run dev              # Start development server (port 4321)
-bun run build            # Build for production (includes RSS fetching)
-bun run preview          # Preview production build
-
-# RSS Management
-bun run fetch:rss        # Manually fetch RSS feeds
-
-# Testing
-bun run test             # Run Playwright tests
-bun run test:e2e         # Run E2E tests (Chromium only)
-bun run test:headed      # Run tests in headed mode
-bun run test:ui          # Run tests with UI
-
-# Code Quality
-bun run format           # Format code with Prettier
-bun run format:check     # Check code formatting
+npx vercel
 ```
 
-## Technology Stack
+### Netlify
+
+```bash
+npx netlify deploy --prod --dir=dist
+```
+
+### GitHub Pages
+
+Use the included GitHub Actions workflow or deploy manually:
+
+```bash
+bun run build
+# Upload dist/ to gh-pages branch
+```
+
+### Cloudflare Pages
+
+Connect your repository and set:
+- **Build command**: `bun run build`
+- **Output directory**: `dist`
+
+## 📜 Scripts
+
+| Command | Description |
+|---------|-------------|
+| `bun run dev` | Start development server |
+| `bun run build` | Build for production |
+| `bun run preview` | Preview production build |
+| `bun run fetch:rss` | Fetch RSS feeds |
+| `bun run test` | Run Playwright tests |
+| `bun run format` | Format code with Prettier |
+
+## 🧪 Testing
+
+```bash
+# Run all tests
+bun run test
+
+# Run tests in headed mode
+bun run test:headed
+
+# Run tests with UI
+bun run test:ui
+```
+
+## 📊 Lighthouse Scores
+
+<p align="center">
+  <img src="public/assets/img/desktop_pagespeed.png" alt="Lighthouse Desktop Score" width="600" />
+</p>
+
+| Metric | Score |
+|--------|-------|
+| Performance | 100 |
+| Accessibility | 100 |
+| Best Practices | 100 |
+| SEO | 100 |
+
+## 🛠️ Tech Stack
 
 - **Framework**: [Astro](https://astro.build/) 5.x
-- **UI Library**: [React](https://react.dev/) 19.x (Islands)
+- **UI**: [React](https://react.dev/) 19.x
 - **Styling**: [Tailwind CSS](https://tailwindcss.com/) 3.x
 - **Runtime**: [Bun](https://bun.sh/) 1.x
 - **Testing**: [Playwright](https://playwright.dev/)
 - **Email**: [EmailJS](https://www.emailjs.com/)
 
-## Contributing
+## 🤝 Contributing
+
+Contributions are welcome! Please read our [Contributing Guide](CONTRIBUTING.md) before submitting a PR.
 
 1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Update documentation if needed
-5. Submit a pull request
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
 
-## License
+## 📄 License
 
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+This project is licensed under the [MIT License](LICENSE).
+
+---
+
+<p align="center">
+  Made with ❤️ by <a href="https://github.com/WayneXuCN">Wenjie Xu</a>
+</p>

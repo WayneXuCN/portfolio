@@ -24,7 +24,7 @@ const UnderlineEffects = () => {
     // 使用 WeakMap 存储监听器，避免内存泄漏
     const elementListeners = new WeakMap();
 
-    const bindUnderlineEffect = (element) => {
+    const bindUnderlineEffect = element => {
       if (!element || element.dataset.underlineBound === 'true') {
         return;
       }
@@ -46,7 +46,7 @@ const UnderlineEffects = () => {
       elementListeners.set(element, { onMouseEnter, onMouseLeave });
     };
 
-    const unbindUnderlineEffect = (element) => {
+    const unbindUnderlineEffect = element => {
       const listeners = elementListeners.get(element);
       if (!listeners) return;
 
@@ -61,10 +61,10 @@ const UnderlineEffects = () => {
     initialElements.forEach(bindUnderlineEffect);
 
     // 监听动态内容变化
-    const observer = new MutationObserver((mutations) => {
-      mutations.forEach((mutation) => {
+    const observer = new MutationObserver(mutations => {
+      mutations.forEach(mutation => {
         // 处理新增节点
-        mutation.addedNodes.forEach((node) => {
+        mutation.addedNodes.forEach(node => {
           if (node.nodeType !== Node.ELEMENT_NODE) return;
 
           if (node.matches?.('.underline')) {
@@ -74,7 +74,7 @@ const UnderlineEffects = () => {
         });
 
         // 处理删除节点，清理监听器
-        mutation.removedNodes.forEach((node) => {
+        mutation.removedNodes.forEach(node => {
           if (node.nodeType !== Node.ELEMENT_NODE) return;
 
           if (node.matches?.('.underline')) {

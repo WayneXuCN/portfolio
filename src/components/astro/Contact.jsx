@@ -6,7 +6,7 @@ import Hero from './Hero.jsx';
  * Contact (Astro 版本)
  * 联系页面完整组件，包含邮箱卡片、社交链接和联系表单
  * 作为 React island 使用时需要 client:load 指令
- * 
+ *
  * 环境变量（Astro 使用 PUBLIC_ 前缀）：
  * - PUBLIC_EMAILJS_SERVICE_ID
  * - PUBLIC_EMAILJS_TEMPLATE_ID
@@ -49,7 +49,7 @@ const Contact = ({ content }) => {
     };
   }, []);
 
-  const copyToClipboard = useCallback(async (text) => {
+  const copyToClipboard = useCallback(async text => {
     if (typeof window === 'undefined') return false;
     try {
       if (navigator?.clipboard?.writeText) {
@@ -73,7 +73,7 @@ const Contact = ({ content }) => {
   }, []);
 
   const handleCopyEmail = useCallback(
-    async (e) => {
+    async e => {
       e.preventDefault();
       const success = await copyToClipboard(emailAddress);
       setCopyStatus(success ? 'success' : 'error');
@@ -82,7 +82,7 @@ const Contact = ({ content }) => {
     [copyToClipboard, emailAddress]
   );
 
-  const sendEmail = async (e) => {
+  const sendEmail = async e => {
     e.preventDefault();
     if (status === 'sending') return;
 
@@ -203,7 +203,7 @@ const Contact = ({ content }) => {
             {cards.social.subtitle}
           </p>
           <ul className='space-y-3'>
-            {cards.social.items.map((item) => (
+            {cards.social.items.map(item => (
               <li key={item.label}>
                 <a
                   href={item.url}
@@ -337,7 +337,7 @@ const Contact = ({ content }) => {
 
       <section className='mb-12 sm:mb-16 md:mb-20'>
         <div className='grid md:grid-cols-3 gap-6'>
-          {services.items.map((item) => (
+          {services.items.map(item => (
             <article
               key={item.title}
               className='p-6 border border-gray-200 dark:border-gray-700 rounded-3xl card-hover'

@@ -1,186 +1,178 @@
-# Simple Landing Page
+<p align="center">
+  <img src="public/assets/img/website.png" alt="Starter Theme 预览" width="800" />
+</p>
 
-[English](README.md) | [中文](README_zh.md)
+<h1 align="center">Starter Theme</h1>
 
-一个使用 **Astro 5**、**React 19** 和 **Tailwind CSS** 构建的极简个人主页和数字名片。
+<p align="center">
+  <strong>基于 Astro 5 构建的现代极简个人主页主题</strong>
+</p>
+
+<p align="center">
+  <a href="https://github.com/WayneXuCN/starter-theme/blob/main/LICENSE">
+    <img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="License" />
+  </a>
+  <a href="https://astro.build/">
+    <img src="https://img.shields.io/badge/Astro-5.x-ff5d01.svg?logo=astro" alt="Astro" />
+  </a>
+  <a href="https://react.dev/">
+    <img src="https://img.shields.io/badge/React-19.x-61dafb.svg?logo=react" alt="React" />
+  </a>
+  <a href="https://tailwindcss.com/">
+    <img src="https://img.shields.io/badge/Tailwind-3.x-38bdf8.svg?logo=tailwindcss" alt="Tailwind CSS" />
+  </a>
+  <a href="https://bun.sh/">
+    <img src="https://img.shields.io/badge/Bun-1.x-fbf0df.svg?logo=bun" alt="Bun" />
+  </a>
+</p>
+
+<p align="center">
+  <a href="#-特性">特性</a> •
+  <a href="#-快速开始">快速开始</a> •
+  <a href="#️-配置">配置</a> •
+  <a href="#-自定义">自定义</a> •
+  <a href="#-部署">部署</a>
+</p>
+
+<p align="center">
+  <a href="README.md">English</a> | <a href="README_zh.md">中文</a>
+</p>
+
+---
 
 ## ✨ 特性
 
-- 🌍 **国际化**：中英文语言支持，采用每语言独立静态页面
-- 🌙 **深色模式**：支持系统偏好检测和 localStorage 持久化的主题切换
-- 📱 **响应式设计**：基于 Tailwind CSS 的移动优先设计
-- 📡 **RSS 聚合**：可配置的 RSS/Atom 订阅解析器，支持 Bun 运行时
-- 📧 **联系表单**：使用 EmailJS 的功能性联系表单
-- 📊 **数据分析**：Google Analytics 集成（可选）
-- 🚀 **性能优化**：Lighthouse 优化的静态站点生成
-- 🎨 **现代 UI**：简洁专业的设计，流畅的动画和过渡效果
-- ⚡ **React Islands**：基于 Astro 群岛架构的交互式组件
+| 特性 | 说明 |
+|------|------|
+| 🌍 **国际化支持** | 基于 Astro 原生 i18n 路由和内容集合的多语言支持 |
+| 🌙 **深色模式** | 自动检测系统偏好，支持 localStorage 持久化 |
+| 📱 **响应式设计** | 移动优先，完美适配各种设备 |
+| 📡 **RSS 聚合** | 从外部 RSS/Atom 源获取并展示文章 |
+| 📧 **联系表单** | 预配置 EmailJS 集成，开箱即用 |
+| 📊 **数据分析** | 可选的 Google Analytics 4 集成 |
+| ⚡ **极致性能** | 静态站点生成，Lighthouse 全项满分 |
+| 🎨 **Tailwind CSS** | 原子化 CSS，完整支持深色模式 |
+| 🏝️ **群岛架构** | React 组件按需加载，最小化 JS 体积 |
+| 🧪 **E2E 测试** | 内置 Playwright 测试套件 |
 
-## 预览
+## 🚀 快速开始
 
-![网站预览](public/assets/img/website.png)
+### 环境要求
 
-## Lighthouse PageSpeed Insights
+- [Bun](https://bun.sh/) 1.0+（推荐）或 [Node.js](https://nodejs.org/) 18+
 
-### 桌面端
+### 创建站点
 
-[![Google Lighthouse PageSpeed Insights](public/assets/img/desktop_pagespeed.png)](https://pagespeed.web.dev/analysis/https-www-wenjiexu-site/b7dpi427wf?form_factor=desktop)
+```bash
+# 克隆模板
+git clone https://github.com/WayneXuCN/starter-theme.git my-site
+cd my-site
 
-自行测试：[Google Lighthouse PageSpeed Insights](https://pagespeed.web.dev/analysis/https-www-wenjiexu-site/b7dpi427wf?form_factor=desktop)
+# 安装依赖
+bun install
 
-### 移动端
-
-[![Google Lighthouse PageSpeed Insights](public/assets/img/mobile_pagespeed.png)](https://pagespeed.web.dev/analysis/https-www-wenjiexu-site/b7dpi427wf?form_factor=mobile)
-
-自行测试：[Google Lighthouse PageSpeed Insights](https://pagespeed.web.dev/analysis/https-www-wenjiexu-site/b7dpi427wf?form_factor=mobile)
-
-## 项目结构
-
-```text
-src/
-├── components/
-│   └── astro/           # React island 组件
-│       ├── About.jsx    # 关于页面组件
-│       ├── Contact.jsx  # 联系页面组件
-│       ├── Footer.jsx   # 页脚组件
-│       ├── HeaderBar.jsx # 带导航的头部
-│       ├── Home.jsx     # 首页组件
-│       ├── Hero.jsx     # Hero 区块
-│       ├── ThemeToggle.jsx # 主题切换器
-│       ├── LanguageSwitcher.jsx # 语言切换器
-│       └── ...          # 其他 UI 组件
-├── data/
-│   └── rss-posts.json   # 生成的 RSS 订阅数据
-├── layouts/
-│   └── BaseLayout.astro # 全局布局（meta、字体、GA）
-├── locales/             # 国际化文件
-│   ├── config.js        # 语言配置
-│   ├── en.json          # 英文内容
-│   └── zh.json          # 中文内容
-├── pages/
-│   ├── index.astro      # 根路径重定向到默认语言
-│   ├── 404.astro        # 自定义 404 页面
-│   ├── en/              # 英文页面
-│   │   ├── index.astro
-│   │   ├── about.astro
-│   │   └── contact.astro
-│   └── zh/              # 中文页面
-│       ├── index.astro
-│       ├── about.astro
-│       └── contact.astro
-├── styles/
-│   └── global.css       # 全局样式
-└── scripts/
-    └── fetch-rss.bun.js # RSS 聚合脚本（Bun）
+# 启动开发服务器
+bun run dev
 ```
 
-## 开发
+在浏览器中打开 [http://localhost:4321](http://localhost:4321) 查看效果。
 
-### 前置要求
-
-- [Bun](https://bun.sh/) 1.0+（推荐）
-- 或 Node.js 18+
-
-### 设置
-
-1. **克隆并安装依赖**：
-
-   ```bash
-   git clone https://github.com/WayneXuCN/homepage.git
-   cd homepage
-   bun install
-   ```
-
-2. **配置环境变量**：
-
-   基于 `.env.example` 创建 `.env` 文件：
-
-   ```bash
-   cp .env.example .env
-   ```
-
-   编辑 `.env` 添加你的配置：
-
-   ```env
-   # EmailJS（联系表单必需）
-   PUBLIC_EMAILJS_SERVICE_ID=your_service_id_here
-   PUBLIC_EMAILJS_TEMPLATE_ID=your_template_id_here
-   PUBLIC_EMAILJS_PUBLIC_KEY=your_public_key_here
-
-   # Google Analytics（可选）
-   PUBLIC_GA_ID=G-XXXXXXXXXX
-   ```
-
-3. **运行开发服务器**：
-
-   ```bash
-   bun run dev
-   ```
-
-   打开 [http://localhost:4321](http://localhost:4321) 在浏览器中查看。
-
-## 构建与部署
-
-### 静态导出
-
-项目配置为静态站点生成：
+### 构建生产版本
 
 ```bash
 bun run build
 ```
 
-静态文件将生成在 `dist/` 目录中，可以部署到任何静态托管服务（GitHub Pages、Vercel、Netlify、Cloudflare Pages 等）。
+输出文件生成在 `dist/` 目录，可部署到任意静态托管平台。
 
-### 构建流程
+## 📁 项目结构
 
-构建包含自动 RSS 聚合步骤：
+```
+starter-theme/
+├── src/
+│   ├── components/astro/     # React 群岛组件
+│   │   ├── HeaderBar.jsx     # 导航头部
+│   │   ├── Hero.jsx          # Hero 区块
+│   │   ├── Footer.jsx        # 页脚
+│   │   ├── ThemeToggle.jsx   # 主题切换
+│   │   └── ...
+│   ├── content/
+│   │   └── i18n/             # 翻译文件（内容集合）
+│   │       ├── en.json
+│   │       └── zh.json
+│   ├── layouts/
+│   │   └── BaseLayout.astro  # 全局 HTML 布局
+│   ├── lib/
+│   │   └── i18n.ts           # i18n 工具函数
+│   ├── pages/
+│   │   ├── index.astro       # 根路径重定向
+│   │   ├── 404.astro         # 错误页面
+│   │   ├── en/               # 英文路由
+│   │   └── zh/               # 中文路由
+│   └── content.config.ts     # 内容集合 Schema
+├── public/                   # 静态资源
+├── scripts/
+│   └── fetch-rss.bun.js      # RSS 聚合脚本
+├── astro.config.mjs          # Astro 配置
+├── tailwind.config.mjs       # Tailwind 配置
+└── package.json
+```
 
-1. **预构建**：`bun run prebuild` 执行 `bun run scripts/fetch-rss.bun.js`
-2. **RSS 抓取**：抓取配置的 RSS/Atom 订阅并生成 `src/data/rss-posts.json`
-3. **静态生成**：Astro 构建包含 RSS 数据的静态站点
+## ⚙️ 配置
 
-## 配置
+### 环境变量
+
+在项目根目录创建 `.env` 文件：
+
+```env
+# EmailJS（联系表单必需）
+PUBLIC_EMAILJS_SERVICE_ID=your_service_id
+PUBLIC_EMAILJS_TEMPLATE_ID=your_template_id
+PUBLIC_EMAILJS_PUBLIC_KEY=your_public_key
+
+# Google Analytics（可选）
+PUBLIC_GA_ID=G-XXXXXXXXXX
+```
+
+### 站点配置
+
+编辑 `astro.config.mjs` 更新站点 URL：
+
+```js
+export default defineConfig({
+  site: 'https://your-domain.com',
+  // ...
+});
+```
 
 ### 内容管理
 
-所有网站内容通过 `src/locales/` 中的 JSON 文件管理：
+所有站点内容通过 `src/content/i18n/` 中的 JSON 文件管理：
 
-- `src/locales/zh.json` - 中文内容
-- `src/locales/en.json` - 英文内容
+| 文件 | 说明 |
+|------|------|
+| `zh.json` | 中文内容 |
+| `en.json` | 英文内容 |
 
-编辑这些文件以更新：
+文件结构：
 
-- 文本和标签
-- 导航链接
-- 项目条目
-- 社交链接
-- SEO 元数据
+```json
+{
+  "site": { "title": "...", "description": "...", "author": "..." },
+  "nav": [{ "label": "首页", "href": "index.html" }],
+  "header": { "name": "...", "avatar": "..." },
+  "hero": { "title": "...", "subtitle": "...", "description": "..." },
+  "websites": { "title": "...", "items": [...] },
+  "featuredPosts": { "title": "...", "rss": {...}, "items": [...] },
+  "footer": { "copyright": "...", "socialLinks": [...] },
+  "about": { ... },
+  "contact": { ... }
+}
+```
 
-### 添加新语言
+### RSS 订阅
 
-1. 在 `src/locales/config.js` 中添加语言配置：
-
-   ```js
-   export const localeConfig = {
-     // ... 现有语言
-     ja: {
-       label: '日本語',
-       name: 'Japanese',
-       hrefLang: 'ja',
-     },
-   };
-   ```
-
-2. 创建包含翻译内容的 `src/locales/ja.json`
-
-3. 在 `src/pages/ja/` 目录下创建页面：
-   - `index.astro`
-   - `about.astro`
-   - `contact.astro`
-
-### RSS 配置
-
-RSS 订阅在语言文件的 `featuredPosts.rss` 中配置：
+在语言 JSON 文件中配置 RSS 聚合：
 
 ```json
 {
@@ -188,10 +180,7 @@ RSS 订阅在语言文件的 `featuredPosts.rss` 中配置：
     "rss": {
       "enabled": true,
       "feeds": [
-        {
-          "url": "https://your-blog.com/feed.xml",
-          "parser": "jekyllFeed"
-        }
+        { "url": "https://blog.example.com/feed.xml", "parser": "default" }
       ],
       "limit": 6
     }
@@ -199,65 +188,149 @@ RSS 订阅在语言文件的 `featuredPosts.rss` 中配置：
 }
 ```
 
-**可用解析器**：
+## 🎨 自定义
 
-- `default`：标准 RSS/Atom 解析器
-- `jekyllFeed`：Jekyll 生成订阅的增强解析器
+### 添加新语言
 
-### EmailJS 设置
+1. **更新 Astro 配置**（`astro.config.mjs`）：
 
-要使联系表单工作：
+   ```js
+   i18n: {
+     defaultLocale: 'zh',
+     locales: ['zh', 'en', 'ja'],
+     routing: { prefixDefaultLocale: true },
+   },
+   ```
 
-1. 创建 [EmailJS](https://www.emailjs.com/) 账户
-2. 设置邮件服务
-3. 创建包含变量的邮件模板：`user_name`、`user_email`、`topic`、`message`
-4. 使用你的 EmailJS 凭据更新环境变量
+2. **更新 i18n 工具**（`src/lib/i18n.ts`）：
 
-### 主题自定义
+   ```ts
+   export const locales = ['zh', 'en', 'ja'] as const;
+   
+   export const localeConfig = {
+     // ...现有语言
+     ja: { label: '日', name: '日本語', hrefLang: 'ja' },
+   };
+   ```
 
-- **颜色**：修改 `tailwind.config.mjs` 中的 Tailwind 配置
-- **字体**：更新 `src/layouts/BaseLayout.astro` 中的字体设置
-- **深色模式**：通过 `dark:` 变体自动支持
+3. **创建翻译文件**（`src/content/i18n/ja.json`）
 
-## 可用脚本
+4. **创建页面路由**（`src/pages/ja/`）
+
+### 样式定制
+
+- **颜色与主题**：编辑 `tailwind.config.mjs`
+- **全局样式**：编辑 `src/styles/global.css`
+- **深色模式**：使用 Tailwind 的 `dark:` 前缀
+
+### 组件说明
+
+所有交互组件位于 `src/components/astro/`：
+
+| 组件 | 用途 |
+|------|------|
+| `HeaderBar.jsx` | 导航头部，含语言切换 |
+| `Hero.jsx` | Hero 区块，标题与 CTA |
+| `Home.jsx` | 首页布局 |
+| `About.jsx` | 关于页面内容 |
+| `Contact.jsx` | 联系页面与表单 |
+| `Footer.jsx` | 页脚 |
+| `ThemeToggle.jsx` | 深色/浅色模式切换 |
+| `LanguageSwitcher.jsx` | 语言选择器 |
+
+## 🚢 部署
+
+主题生成静态 HTML 文件，可部署到任意平台：
+
+### Vercel
 
 ```bash
-# 开发
-bun run dev              # 启动开发服务器（端口 4321）
-bun run build            # 构建生产版本（包含 RSS 抓取）
-bun run preview          # 预览生产构建
-
-# RSS 管理
-bun run fetch:rss        # 手动抓取 RSS 订阅
-
-# 测试
-bun run test             # 运行 Playwright 测试
-bun run test:e2e         # 运行 E2E 测试（仅 Chromium）
-bun run test:headed      # 以有头模式运行测试
-bun run test:ui          # 运行带 UI 的测试
-
-# 代码质量
-bun run format           # 使用 Prettier 格式化代码
-bun run format:check     # 检查代码格式
+npx vercel
 ```
 
-## 技术栈
+### Netlify
+
+```bash
+npx netlify deploy --prod --dir=dist
+```
+
+### GitHub Pages
+
+使用内置的 GitHub Actions 工作流，或手动部署：
+
+```bash
+bun run build
+# 上传 dist/ 到 gh-pages 分支
+```
+
+### Cloudflare Pages
+
+连接仓库并设置：
+- **构建命令**：`bun run build`
+- **输出目录**：`dist`
+
+## 📜 脚本命令
+
+| 命令 | 说明 |
+|------|------|
+| `bun run dev` | 启动开发服务器 |
+| `bun run build` | 构建生产版本 |
+| `bun run preview` | 预览生产构建 |
+| `bun run fetch:rss` | 抓取 RSS 订阅 |
+| `bun run test` | 运行 Playwright 测试 |
+| `bun run format` | 使用 Prettier 格式化代码 |
+
+## 🧪 测试
+
+```bash
+# 运行所有测试
+bun run test
+
+# 以有头模式运行测试
+bun run test:headed
+
+# 使用 UI 运行测试
+bun run test:ui
+```
+
+## 📊 Lighthouse 评分
+
+<p align="center">
+  <img src="public/assets/img/desktop_pagespeed.png" alt="Lighthouse 桌面端评分" width="600" />
+</p>
+
+| 指标 | 分数 |
+|------|------|
+| 性能 | 100 |
+| 无障碍 | 100 |
+| 最佳实践 | 100 |
+| SEO | 100 |
+
+## 🛠️ 技术栈
 
 - **框架**：[Astro](https://astro.build/) 5.x
-- **UI 库**：[React](https://react.dev/) 19.x（Islands）
+- **UI**：[React](https://react.dev/) 19.x
 - **样式**：[Tailwind CSS](https://tailwindcss.com/) 3.x
 - **运行时**：[Bun](https://bun.sh/) 1.x
 - **测试**：[Playwright](https://playwright.dev/)
 - **邮件**：[EmailJS](https://www.emailjs.com/)
 
-## 贡献
+## 🤝 贡献指南
 
-1. Fork 仓库
-2. 创建功能分支
-3. 进行更改
-4. 如需更新文档
-5. 提交 Pull Request
+欢迎贡献！提交 PR 前请阅读 [贡献指南](CONTRIBUTING.md)。
 
-## 许可证
+1. Fork 本仓库
+2. 创建功能分支（`git checkout -b feature/amazing-feature`）
+3. 提交更改（`git commit -m 'Add amazing feature'`）
+4. 推送到分支（`git push origin feature/amazing-feature`）
+5. 发起 Pull Request
 
-本项目基于 MIT 许可证。详见 [LICENSE](LICENSE) 文件。
+## 📄 许可证
+
+本项目基于 [MIT 许可证](LICENSE) 开源。
+
+---
+
+<p align="center">
+  Made with ❤️ by <a href="https://github.com/WayneXuCN">Wenjie Xu</a>
+</p>

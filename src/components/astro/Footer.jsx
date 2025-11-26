@@ -36,6 +36,7 @@ SocialLink.propTypes = {
 
 /**
  * IcpInfo - 备案信息组件
+ * 响应式设计：小屏幕垂直堆叠，中等及以上屏幕水平排列
  */
 const IcpInfo = ({ footer }) => {
   if (!footer) return null;
@@ -43,21 +44,21 @@ const IcpInfo = ({ footer }) => {
   const { icp, mps } = footer;
 
   return (
-    <div className='flex flex-wrap items-center justify-center md:justify-start gap-2 text-xs text-gray-500 dark:text-gray-400'>
+    <div className='flex flex-col sm:flex-row items-center justify-center md:justify-start gap-1 sm:gap-2 text-xs text-gray-500 dark:text-gray-400'>
       {/* ICP备案 */}
       {icp?.text && icp?.url && (
         <a
           href={icp.url}
           target='_blank'
           rel='noopener noreferrer'
-          className='hover:text-gray-700 dark:hover:text-gray-300 transition-colors duration-200'
+          className='hover:text-gray-700 dark:hover:text-gray-300 transition-colors duration-200 whitespace-nowrap'
         >
           {icp.text}
         </a>
       )}
 
-      {/* 分隔符 */}
-      {icp?.text && mps?.text && <span className='text-gray-400 select-none'>|</span>}
+      {/* 分隔符 - 仅在 sm 及以上屏幕显示 */}
+      {icp?.text && mps?.text && <span className='hidden sm:inline text-gray-400 select-none'>|</span>}
 
       {/* 公安备案 */}
       {mps?.text && mps?.url && (
@@ -65,9 +66,9 @@ const IcpInfo = ({ footer }) => {
           href={mps.url}
           target='_blank'
           rel='noopener noreferrer'
-          className='flex items-center gap-1 hover:text-gray-700 dark:hover:text-gray-300 transition-colors duration-200'
+          className='flex items-center gap-1 hover:text-gray-700 dark:hover:text-gray-300 transition-colors duration-200 whitespace-nowrap'
         >
-          {mps?.logo && <img src={mps.logo} alt='公安备案' className='w-3 h-3 object-contain' />}
+          {mps?.logo && <img src={mps.logo} alt='公安备案' className='w-3 h-3 object-contain flex-shrink-0' />}
           <span>{mps.text}</span>
         </a>
       )}
@@ -110,7 +111,7 @@ const Footer = ({ footer }) => {
             <IcpInfo footer={footer} />
           </div>
           <div className='flex space-x-4 sm:space-x-6'>
-            {socialLinks.map((link) => (
+            {socialLinks.map(link => (
               <SocialLink key={link.url} link={link} />
             ))}
           </div>

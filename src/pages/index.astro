@@ -1,18 +1,20 @@
 ---
 /**
  * 根路径重定向到默认语言 (/zh/)
- * 使用 meta refresh 实现客户端重定向
+ * 使用 Astro 原生 i18n 配置
  */
-const defaultLang = 'zh';
-const redirectUrl = `/${defaultLang}/`;
+import { getRelativeLocaleUrl } from 'astro:i18n';
+import { defaultLocale } from '../lib/i18n';
+
+const redirectUrl = getRelativeLocaleUrl(defaultLocale);
 ---
 
 <!doctype html>
-<html lang="zh">
+<html lang='zh'>
   <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="refresh" content={`0;url=${redirectUrl}`} />
-    <link rel="canonical" href={redirectUrl} />
+    <meta charset='UTF-8' />
+    <meta http-equiv='refresh' content={`0;url=${redirectUrl}`} />
+    <link rel='canonical' href={redirectUrl} />
     <title>Redirecting...</title>
   </head>
   <body>
